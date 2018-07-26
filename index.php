@@ -16,7 +16,7 @@
     <!-- Bootstrap Core CSS -->
     <link href="css/lib/bootstrap/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
-
+    <link href="css/lib/sweetalert/sweetalert.css" rel="stylesheet">
     <link href="css/lib/calendar2/semantic.ui.min.css" rel="stylesheet">
     <link href="css/lib/calendar2/pignose.calendar.min.css" rel="stylesheet">
     <link href="css/lib/owl.carousel.min.css" rel="stylesheet" />
@@ -399,10 +399,19 @@ $(document).ready(function(){
 
     <script src="js/lib/owl-carousel/owl.carousel.min.js"></script>
     <script src="js/lib/owl-carousel/owl.carousel-init.js"></script>
+    <!-- slimscrollbar scrollbar JavaScript -->
+    <!--stickey kit -->
+
+    <script src="js/lib/sweetalert/sweetalert.min.js"></script>
+    <!-- scripit init-->
+    <script src="js/lib/sweetalert/sweetalert.init.js"></script>
+    <!--Custom JavaScript -->
+    <script src="js/custom.min.js"></script>
     <script src="js/scripts.js"></script>
     <!-- scripit init-->
 
     <script src="js/custom.min.js"></script>
+
 
 </body>
 

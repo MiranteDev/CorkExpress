@@ -1,4 +1,4 @@
-document.querySelector('.sweet-wrong').onclick = function(){
+/*document.querySelector('.sweet-wrong').onclick = function(){
     sweetAlert("Oops...", "Something went wrong !!", "error");
 };
 document.querySelector('.sweet-message').onclick = function(){
@@ -23,8 +23,8 @@ document.querySelector('.sweet-confirm').onclick = function(){
         function(){
             swal("Deleted !!", "Hey, your imaginary file has been deleted !!", "success");
         });
-};
-document.querySelector('.sweet-success-cancel').onclick = function(){
+};*/
+$('.sweet-success-cancel').click(function(){
     swal({
             title: "Are you sure to delete ?",
             text: "You will not be able to recover this imaginary file !!",
@@ -38,13 +38,17 @@ document.querySelector('.sweet-success-cancel').onclick = function(){
         },
         function(isConfirm){
             if (isConfirm) {
-                swal("Deleted !!", "Hey, your imaginary file has been deleted !!", "success");
+                //var id = $('#id_funcionario').val();
+                var id = swal('${value}');
+
+                swal("Deleted !!"+id, "Hey, your imaginary file has been deleted !!", "success");
             }
             else {
                 swal("Cancelled !!", "Hey, your imaginary file is safe !!", "error");
             }
         });
-};
+});
+/*
 document.querySelector('.sweet-image-message').onclick = function(){
     swal({
         title: "Sweet !!",
@@ -100,4 +104,4 @@ document.querySelector('.sweet-ajax').onclick = function(){
                 swal("Hey, your ajax request finished !!");
             }, 2000);
         });
-};
+};*/
