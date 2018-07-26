@@ -1,10 +1,13 @@
 <div class="page-wrapper">
   <div class="container-fluid">
+    <div class="card card-outline-info">
 
 
-    <div class="card-header">Emissão de Recibos </div>
+    <div class="card-header">
+      <h4 class="card-title text-white">Emitir Salarios</h4>
+    </div>
                                         <div class="card-body">
-                                            <div class="card-title">
+                                            <div class="card-title text-white">
                                                 <h3 class="text-center title-2">Recibo</h3>
                                             </div>
                                             <hr>
@@ -39,7 +42,6 @@
             <select id="year" name="year" >
               <?php
 
-              
                   for($year=date("Y")-5;$year<=date("Y")+5;$year++){
                     if(date("Y")==$year){
                       echo "<option selected value=\"$year\">$year</option>";
@@ -129,3 +131,4 @@
           </div>
       </div>
   </div>
+</div>

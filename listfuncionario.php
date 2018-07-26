@@ -17,6 +17,7 @@
                               <th style="text-align:left;">Tipo de Categoria</th>
                               <th style="text-align:left;">Tipo de Departamento</th>
                               <th style="text-align:left;">Salario</th>
+                              <th style="text-align:left;">Action</th>
 
                     </tr>
                 </thead>
@@ -40,7 +41,9 @@
                         }else{
                             echo '<td>Operacional</td>';
                         }
-                        echo '<td>'.$row['func_salario'].' €</td></tr>';
+                        echo '<td>'.$row['func_salario'].' €</td>
+                        <td><button type="submit" name="btapagar" class="btn btn-danger m-b-10 m-l-5">Apagar</button></td>
+                        </tr>';
 
 
 
