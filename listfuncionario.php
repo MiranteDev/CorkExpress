@@ -42,7 +42,10 @@
                             echo '<td>Operacional</td>';
                         }
                         echo '<td>'.$row['func_salario'].' €</td>
-                        <td><button type="submit" name="btapagar" class="btn btn-danger m-b-10 m-l-5">Apagar</button></td>
+                        <td>
+                        <form method="post">
+                        <input type="hidden" name="id_funcionario" value="'.$row['id_funcionario'].'">
+                        <button type="submit" name="btapagar" class="btn btn-danger m-b-10 m-l-5">Apagar</button></td>
                         </tr>';
 
 
