@@ -25,6 +25,7 @@ document.querySelector('.sweet-confirm').onclick = function(){
         });
 };*/
 $('.sweet-success-cancel').click(function(){
+  var id =$(this).val();
     swal({
             title: "Are you sure to delete ?",
             text: "You will not be able to recover this imaginary file !!",
@@ -39,9 +40,18 @@ $('.sweet-success-cancel').click(function(){
         function(isConfirm){
             if (isConfirm) {
                 //var id = $('#id_funcionario').val();
-                var id = swal('${value}');
+                $.ajax({ url: '/corkexpress/index.php?an=4',
+                  data: {'id_funcionario': id
+                    ,'btapagar': 'click'},
+                  type: 'post'
+                });
 
-                swal("Deleted !!"+id, "Hey, your imaginary file has been deleted !!", "success");
+                swal({title:"Deleted !!", text:"Hey, your imaginary file has been deleted !!", type:"success"},
+                function(){
+                  window.location.href = '/corkexpress/index.php?an=4';
+                }
+              );
+
             }
             else {
                 swal("Cancelled !!", "Hey, your imaginary file is safe !!", "error");

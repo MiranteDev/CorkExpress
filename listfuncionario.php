@@ -43,12 +43,10 @@
                         }
                         echo '<td>'.$row['func_salario'].' €</td>
                         <td>
-                        <form method="post">
-                        <input type="hidden" name="id_funcionario" id="id_funcionario" value="'.$row['id_funcionario'].'">
                         <div class="sweetalert m-t-15">
-                            <button type="button" id="2" value="'.$row['id_funcionario'].'" class="btn btn-warning btn sweet-success-cancel">Apagar</button>
+                            <button type="button" id="2" value="'.$row['id_funcionario'].'" class="btn btn-danger btn sweet-success-cancel">Apagar</button>
                         </div>
-                        </form></td>
+                        </td>
                         </tr>';
 
                           $i+=1;
@@ -71,7 +69,7 @@
 
               mysqli_query($conn, "DELETE FROM funcionarios WHERE id_funcionario = '$_POST[id_funcionario]'");
 
-              echo'<meta http-equiv="refresh" content="0;url=/corkexpress/index.php?an=4"';
+              echo'<meta http-equiv="refresh" content="0;url=/corkexpress/index.php?an=4">';
 
               include 'connections/diconn.php';
             } ?>
