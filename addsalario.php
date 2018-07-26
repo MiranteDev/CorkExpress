@@ -38,6 +38,8 @@
             <label for="year">Year:</label>
             <select id="year" name="year" >
               <?php
+
+              
                   for($year=date("Y")-5;$year<=date("Y")+5;$year++){
                     if(date("Y")==$year){
                       echo "<option selected value=\"$year\">$year</option>";
