@@ -1,5 +1,3 @@
-<?php session_start(); ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,19 +10,52 @@
     <meta name="author" content="">
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
-    <title>Ela - Bootstrap Admin Dashboard Template</title>
+    <title> Cork Express</title>
     <!-- Bootstrap Core CSS -->
     <link href="css/lib/bootstrap/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
     <link href="css/lib/calendar2/semantic.ui.min.css" rel="stylesheet">
     <link href="css/lib/calendar2/pignose.calendar.min.css" rel="stylesheet">
     <link href="css/lib/owl.carousel.min.css" rel="stylesheet" />
     <link href="css/lib/owl.theme.default.min.css" rel="stylesheet" />
     <link href="css/helper.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+$(document).ready(function(){
+    $('#funcionario').change(function(){
+            //Selected value
+            var funcionarioid = $('#funcionario').val();
+            //alert("value in js "+distritosid);
 
-    
+            //Ajax for calling php function
+            $.post('funcionario.php', { funcionarioid: funcionarioid }, function(data){
+               // alert('ajax completed. Response:  '+data);
+                //do after submission operation in DOM
+                $('#campos').html(data);
+            });
+        });
+      });
+        </script>
+
+
+        <script>
+    $(document).ready(function(){
+        $('#funcionario').change(function(){
+                //Selected value
+                var funcionarioid = $('#funcionario').val();
+                //alert("value in js "+distritosid);
+
+                //Ajax for calling php function
+                $.post('contablidade.php', { funcionarioid: funcionarioid }, function(data){
+                   // alert('ajax completed. Response:  '+data);
+                    //do after submission operation in DOM
+                    $('#contablidade').html(data);
+                });
+            });
+          });
+            </script>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:** -->
     <!--[if lt IE 9]>
@@ -292,7 +323,7 @@
               include 'home.php';
               break;
             case '2':
-                // code...
+                  include 'addsalario.php';
                 break;
             case '3':
                   // code...
