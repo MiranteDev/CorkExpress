@@ -1,6 +1,5 @@
 
 <div class="page-wrapper">
-
   <div class="container-fluid">
                   <!-- Start Page Content -->
                   <div class="row">
