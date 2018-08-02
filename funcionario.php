@@ -1,6 +1,6 @@
 <?php
 
-function prncher(){
+
 $funcionarioid = $_REQUEST['funcionarioid'];
 
 include 'connections/conn.php';
@@ -16,5 +16,5 @@ while ($row = mysqli_fetch_array($catprf)) {
 }
 
 include 'connections/diconn.php';
-}
+
  ?>
