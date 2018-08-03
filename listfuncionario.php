@@ -69,7 +69,7 @@
 
               mysqli_query($conn, "DELETE FROM funcionarios WHERE id_funcionario = '$_POST[id_funcionario]'");
 
-              echo'<meta http-equiv="refresh" content="0;url=/corkexpress/index.php?an=4">';
+              echo'<meta http-equiv="refresh" content="0;url=/corkexpress/indexadmin.php?an=4">';
 
               include 'connections/diconn.php';
             } ?>

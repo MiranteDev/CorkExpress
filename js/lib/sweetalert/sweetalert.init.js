@@ -40,7 +40,7 @@ $('.sweet-success-cancel').click(function(){
         function(isConfirm){
             if (isConfirm) {
                 //var id = $('#id_funcionario').val();
-                $.ajax({ url: '/corkexpress/index.php?an=4',
+                $.ajax({ url: '/corkexpress/indexadmin.php?an=4',
                   data: {'id_funcionario': id
                     ,'btapagar': 'click'},
                   type: 'post'
@@ -48,7 +48,7 @@ $('.sweet-success-cancel').click(function(){
 
                 swal({title:"Deleted !!", text:"Hey, your imaginary file has been deleted !!", type:"success"},
                 function(){
-                  window.location.href = '/corkexpress/index.php?an=4';
+                  window.location.href = '/corkexpress/indexadmin.php?an=4';
                 }
               );
 
