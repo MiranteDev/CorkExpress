@@ -1,3 +1,12 @@
+<?php
+  @$an = $_REQUEST['an'];
+
+  if(!$an){
+    echo'<meta http-equiv="refresh" content="0;url=/corkexpress/indexuser.php"';
+  }
+
+?>
+
 <!-- Page wrapper  -->
 <div class="page-wrapper">
     <!-- Bread crumb -->

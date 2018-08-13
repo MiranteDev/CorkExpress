@@ -1,3 +1,12 @@
+<?php
+  @$an = $_REQUEST['an'];
+
+  if(!$an){
+    echo'<meta http-equiv="refresh" content="0;url=/corkexpress/indexadmin.php"';
+  }
+
+?>
+
 <div class="page-wrapper">
   <div class="container-fluid">
       <!-- Start Page Content -->
@@ -121,7 +130,7 @@
 
 
 
-        
+
       </div>
   </div>
 

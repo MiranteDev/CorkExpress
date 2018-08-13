@@ -283,7 +283,7 @@
           switch ($an) {
             case '1':
               // code...
-              include 'home.php';
+              include 'editfuncionario.php';
               break;
             case '2':
                   include 'addsalario.php';
