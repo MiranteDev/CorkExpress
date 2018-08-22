@@ -134,7 +134,13 @@
                         <!-- Comment -->
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-muted text-muted  " href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fa fa-bell"></i>
-								<div class="notify"> <span class="heartbit"></span> <span class="point"></span> </div>
+								<div class="notify"><?php include 'connections/conn.php';
+
+                                $q = mysqli_fetch_array(mysqli_query($conn,"SELECT COUNT(id_notificacao) as total FROM notificacao WHERE estado = '0' AND id_funcionario='$_SESSION[userid]'"));
+                                if($q['total'] != '0'){
+                                  echo "<span class=\"heartbit\"></span> <span class=\"point\"></span>";
+                                }
+                                 include 'connections/diconn.php';?></div>
 							</a>
                             <div class="dropdown-menu dropdown-menu-right mailbox animated zoomIn">
                                 <ul>
@@ -144,37 +150,30 @@
                                     <li>
                                         <div class="message-center">
                                             <!-- Message -->
-                                            <a href="#">
-                                                <div class="btn btn-danger btn-circle m-r-10"><i class="fa fa-link"></i></div>
-                                                <div class="mail-contnet">
-                                                    <h5>This is title</h5> <span class="mail-desc">Just see the my new admin!</span> <span class="time">9:30 AM</span>
-                                                </div>
-                                            </a>
-                                            <!-- Message -->
-                                            <a href="#">
-                                                <div class="btn btn-success btn-circle m-r-10"><i class="ti-calendar"></i></div>
-                                                <div class="mail-contnet">
-                                                    <h5>This is another title</h5> <span class="mail-desc">Just a reminder that you have event</span> <span class="time">9:10 AM</span>
-                                                </div>
-                                            </a>
-                                            <!-- Message -->
-                                            <a href="#">
-                                                <div class="btn btn-info btn-circle m-r-10"><i class="ti-settings"></i></div>
-                                                <div class="mail-contnet">
-                                                    <h5>This is title</h5> <span class="mail-desc">You can customize this template as you want</span> <span class="time">9:08 AM</span>
-                                                </div>
-                                            </a>
-                                            <!-- Message -->
-                                            <a href="#">
-                                                <div class="btn btn-primary btn-circle m-r-10"><i class="ti-user"></i></div>
-                                                <div class="mail-contnet">
-                                                    <h5>This is another title</h5> <span class="mail-desc">Just see the my admin!</span> <span class="time">9:02 AM</span>
-                                                </div>
-                                            </a>
+                                            <?php
+                                              include 'connections/conn.php';
+
+                                              $q = mysqli_query($conn,"SELECT * FROM notificacao WHERE estado='0' AND id_funcionario='$_SESSION[userid]'");
+
+                                              while($noti = mysqli_fetch_array($q)){
+
+                                                  echo "<a href=\"#\">
+                                                      <div class=\"btn btn-danger btn-circle m-r-10\"><i class=\"fa fa-link\"></i></div>
+                                                      <div class=\"mail-contnet\">
+                                                          <h5>$noti[nome]</h5> <span class=\"mail-desc\">$noti[assunto]</span> <span class=\"time\">$noti[data]</span>
+                                                      </div>
+                                                  </a>";
+
+                                              }
+
+                                              include 'connections/diconn.php';
+
+                                              ?>
+
                                         </div>
                                     </li>
                                     <li>
-                                        <a class="nav-link text-center" href="javascript:void(0);"> <strong>Check all notifications</strong> <i class="fa fa-angle-right"></i> </a>
+                                        <a class="nav-link text-center" href="/corkexpress/indexuser.php?an=4"> <strong>Check all notifications</strong> <i class="fa fa-angle-right"></i> </a>
                                     </li>
                                 </ul>
                             </div>
@@ -188,7 +187,7 @@
                                 <ul class="dropdown-user">
                                     <li><a href="/corkexpress/indexuser.php?an=1"><i class="ti-user"></i> Dados Pessoais</a></li>
                                     <li><a href="#"><i class="ti-settings"></i> Setting</a></li>
-                                    <li><a href="#"><i class="fa fa-power-off"></i> Logout</a></li>
+                                    <li><a href="/corkexpress/closeS.php"><i class="fa fa-power-off"></i> Logout</a></li>
                                 </ul>
                             </div>
                         </li>
@@ -213,8 +212,8 @@
                         </li>
                         <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-user"></i><span class="hide-menu">Notificações</span></a>
                             <ul aria-expanded="false" class="collapse">
-                                <li><a href="/corkexpress/indexuser.php?an=3">Enviar</a></li>
-                                <li><a href="/corkexpress/indexuser.php?an=4">Ver</a></li>
+                                <li><a href="/corkexpress/indexuser.php?an=4&page=compose">Enviar</a></li>
+                                <li><a href="/corkexpress/indexuser.php?an=4&page=read">Ver</a></li>
                             </ul>
                         </li>
 

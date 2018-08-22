@@ -1,10 +1,11 @@
 <?php
+/*
   @$an = $_REQUEST['an'];
 
   if(!$an){
-    echo'<meta http-equiv="refresh" content="0;url=/corkexpress/indexuser.php"';
+    echo'<meta http-equiv="refresh" content="0;url=/corkexpress/indexuser.php?an=1"';
   }
-
+*/
 ?>
 <div class="page-wrapper">
   <?php

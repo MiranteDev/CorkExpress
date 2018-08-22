@@ -1,4 +1,8 @@
-<?php require_once  'functions/functions.php'; ?>
+<?php
+
+session_start();
+session_destroy();
+ require_once  'functions/functions.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -69,7 +73,7 @@
 
 
                                       login($_POST['user'],$_POST['pass']);
-                                    
+
 
 
 

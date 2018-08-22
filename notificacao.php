@@ -21,10 +21,40 @@
                         <div class="card-content">
                             <!-- Left sidebar -->
                             <div class="inbox-leftbar">
-                                <a class="btn btn-danger btn-block waves-effect waves-light" href="email-compose.html">Enviar Notificação</a>
+                              <?php @$page = $_REQUEST['page'];
+
+                              if(!empty(@$_SESSION['userid'])){
+                                if($page=='read')
+                                {
+                                  echo "<a class=\"btn btn-danger btn-block waves-effect waves-light\" href=\"/corkexpress/indexuser.php?an=4&page=compose\">Enviar Notificação";
+                                }else
+                                {
+                                  echo "<a class=\"btn btn-danger btn-block waves-effect waves-light\" href=\"/corkexpress/indexuser.php?an=4&page=read\">Ver Notificações";
+                                }
+                              }else if(!empty(@$_SESSION['admin'])){
+                                 if($page=='read')
+                                 {
+                                   echo "<a class=\"btn btn-danger btn-block waves-effect waves-light\" href=\"/corkexpress/indexadmin.php?an=9&page=compose\">Enviar Notificação";
+                                 }else
+                                 {
+                                   echo "<a class=\"btn btn-danger btn-block waves-effect waves-light\" href=\"/corkexpress/indexadmin.php?an=9&page=read\">Ver Notificações";
+                                 }
+                               }
+                                 ?></a>
 
                                 <div class="mail-list mt-4">
-                                    <a class="list-group-item border-0 text-danger" href="#"><i class="mdi mdi-inbox font-18 align-middle mr-2"></i><b>Inbox</b><span class="label label-danger float-right ml-2">8</span></a>
+                                    <a class="list-group-item border-0 text-danger" href="#"><i class="mdi mdi-inbox font-18 align-middle mr-2"></i><b>Inbox</b><?php include 'connections/conn.php';
+                                            if(empty(@$_SESSION['userid'])){
+                                              $q = mysqli_fetch_array(mysqli_query($conn,"SELECT COUNT(id_notificacao) as total FROM notificacao WHERE estado = '0' AND id_funcionario='0'"));
+
+                                            }else{
+                                              $q = mysqli_fetch_array(mysqli_query($conn,"SELECT COUNT(id_notificacao) as total FROM notificacao WHERE estado = '0' AND id_funcionario='$_SESSION[userid]'"));
+
+                                            }
+                                                      if($q['total'] != '0'){
+                                                      echo "<span class=\"label label-danger float-right ml-2\">$q[total]</span>";
+                                                    }
+                                                     include 'connections/diconn.php';?></a>
                                     <a class="list-group-item border-0" href="#"><i class="mdi mdi-star font-18 align-middle mr-2"></i>Starred</a>
 
                                     <a class="list-group-item border-0" href="#"><i class="mdi mdi-delete font-18 align-middle mr-2"></i>Trash</a>
@@ -84,62 +114,21 @@
                                     </div>
                                 </div>
 
+                                  <?php
+                                  @$page = $_REQUEST['page'];
+
+                                  switch ($page) {
+                                    case 'compose':
+                                      // code...
+                                      include 'sendnotify.php';
+                                      break;
+                                    case 'read':
+                                          include 'viewnotify.php';
+                                        break;
+                                      }
+                                    ?>
 
 
-                                <div class="">
-                                    <div class="mt-4">
-                                        <div class="">
-                                            <ul class="message-list">
-                                              <?php
-                                                include 'connections/conn.php';
-
-                                                $q = mysqli_query($conn,"SELECT * FROM notificacao");
-
-                                                while($noti = mysqli_fetch_array($q)){
-                                                    echo "<li class=\"unread\">
-                                                        <a href=\"email-read.html\">
-                                                            <div class=\"col-mail col-mail-1\">
-                                                                <div class=\"checkbox-wrapper-mail\">
-                                                                    <input type=\"checkbox\" id=\"chk1\">
-                                                                    <label class=\"toggle\" for=\"chk1\"></label>
-                                                                </div>
-                                                                <p class=\"title\">$noti[nome]</p><span class=\"star-toggle fa fa-star-o\"></span>
-                                                            </div>
-                                                            <div class=\"col-mail col-mail-2\">
-                                                                <div class=\"subject\">$noti[assunto] &nbsp;&ndash;&nbsp;
-                                                                    <span class=\"teaser\">$noti[msg]</span>
-                                                                </div>
-                                                                <div class=\"date\">$noti[data]</div>
-                                                            </div>
-                                                        </a>
-                                                    </li>";
-                                                }
-
-                                                include 'connections/diconn.php';
-
-                                                ?>
-
-
-
-                                            </ul>
-                                        </div>
-
-                                    </div>
-                                    <!-- panel body -->
-                                </div>
-                                <!-- panel -->
-
-                                <div class="row">
-                                    <div class="col-7">
-                                        Showing 1 - 20 of 289
-                                    </div>
-                                    <div class="col-5">
-                                        <div class="btn-group float-right">
-                                            <button class="btn btn-gradient waves-effect" type="button"><i class="fa fa-chevron-left"></i></button>
-                                            <button class="btn btn-gradient waves-effect" type="button"><i class="fa fa-chevron-right"></i></button>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
 
                             <div class="clearfix"></div>
