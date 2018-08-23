@@ -203,7 +203,7 @@
                 <!-- Sidebar navigation-->
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
-                        <li class="nav-label">Painel de Administrador</li>
+                        <a href="/corkexpress/indexuser.php"><li class="nav-label">Painel de Administrador</li></a>
                         <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-briefcase"></i><span class="hide-menu">Pessoal</span></a>
                             <ul aria-expanded="false" class="collapse">
                                 <li><a href="/corkexpress/indexuser.php?an=1">Dados Pessoais</a></li>
@@ -230,6 +230,7 @@
           @$an = $_REQUEST['an'];
 
           switch ($an) {
+
             case '1':
               // code...
               include 'editfuncionario.php';

@@ -115,6 +115,22 @@
                                         </div>
                                               <!--/span-->
                                           </div>
+                                          <h3 class="box-title m-t-40">Informaçãos Login</h3>
+                                          <hr>
+                                          <div class="row">
+                                              <div class="col-md-6 ">
+                                                  <div class="form-group">
+                                                      <label>Username</label>
+                                                      <input type="text"  name="username" placeholder="Username" class="form-control">
+                                                  </div>
+                                              </div>
+                                              <div class="col-md-6 ">
+                                                  <div class="form-group">
+                                                      <label>Password</label>
+                                                      <input type="password"  name="password" placeholder="Password" class="form-control">
+                                                  </div>
+                                              </div>
+                                          </div>
 
                                       </div>
                                       <div class="form-actions">
@@ -133,6 +149,11 @@
                                               '$_POST[func_nome]','$_POST[func_bi]','$_POST[func_nif]','$_POST[func_niss]'
                                               ,'$_POST[func_nib]','$_POST[func_datan]','$_POST[func_salario]'
                                               ,'$_POST[func_tipodepart]','$_POST[id_categoria]'
+                                            )");
+                                              $ultimo = mysqli_insert_id($conn);
+                                              
+                                            mysqli_query($conn,"INSERT INTO login (username,password,tipo,id_funcionario) VALUES (
+                                              '$_POST[username]','$_POST[password]','0','$ultimo'
                                             )");
 
                                           include 'connections/diconn.php';

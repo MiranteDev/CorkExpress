@@ -43,17 +43,19 @@
                                  ?></a>
 
                                 <div class="mail-list mt-4">
-                                    <a class="list-group-item border-0 text-danger" href="#"><i class="mdi mdi-inbox font-18 align-middle mr-2"></i><b>Inbox</b><?php include 'connections/conn.php';
+                                    <?php include 'connections/conn.php';
                                             if(empty(@$_SESSION['userid'])){
                                               $q = mysqli_fetch_array(mysqli_query($conn,"SELECT COUNT(id_notificacao) as total FROM notificacao WHERE estado = '0' AND id_funcionario='0'"));
-
+                                              echo "<a class=\"list-group-item border-0 text-danger\" href=\"/corkexpress/indexadmin.php?an=9&page=read\"><i class=\"mdi mdi-inbox font-18 align-middle mr-2\"></i><b>Inbox</b>";
                                             }else{
                                               $q = mysqli_fetch_array(mysqli_query($conn,"SELECT COUNT(id_notificacao) as total FROM notificacao WHERE estado = '0' AND id_funcionario='$_SESSION[userid]'"));
+                                              echo "<a class=\"list-group-item border-0 text-danger\" href=\"/corkexpress/indexuser.php?an=4&page=read\"><i class=\"mdi mdi-inbox font-18 align-middle mr-2\"></i><b>Inbox</b>";
 
                                             }
                                                       if($q['total'] != '0'){
                                                       echo "<span class=\"label label-danger float-right ml-2\">$q[total]</span>";
                                                     }
+
                                                      include 'connections/diconn.php';?></a>
                                     <a class="list-group-item border-0" href="#"><i class="mdi mdi-star font-18 align-middle mr-2"></i>Starred</a>
 
@@ -125,7 +127,11 @@
                                     case 'read':
                                           include 'viewnotify.php';
                                         break;
+                                        default:
+                                        include 'viewnotify.php';
+                                      break;
                                       }
+
                                     ?>
 
 
