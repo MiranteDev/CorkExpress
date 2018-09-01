@@ -86,16 +86,12 @@
 
               mysqli_query($conn,"UPDATE categoria_profissional SET descricao_categoria = '$_POST[descricao_categoria]' WHERE id_categoria = $_POST[id_categoria]");
 
-
-
               include 'connections/diconn.php';
-
 
               unset($_SESSION['categoria']);
 //              session_destroy();
 
               echo '<meta http-equiv="refresh" content="0;url=/corkexpress/indexadmin.php?an=6"';
-
 
             }
 
@@ -105,13 +101,12 @@
 
               include 'connections/conn.php';
 
-
-
               mysqli_query($conn, "DELETE FROM categoria_profissional WHERE id_categoria = '$_POST[id_categoria]'");
 
               echo'<meta http-equiv="refresh" content="0;url=/corkexpress/indexadmin.php?an=6"';
 
               include 'connections/diconn.php';
+
             }
 
 

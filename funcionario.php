@@ -1,17 +1,19 @@
 <?php
 
 
-$funcionarioid = $_REQUEST['funcionarioid'];
+$funcnif = $_REQUEST['func_nif'];
 
 include 'connections/conn.php';
 
-$catprf = mysqli_query($conn,"SELECT id_funcionario,func_nome,func_nib,func_nif,func_niss,func_salario from funcionarios WHERE id_funcionario = $funcionarioid");
+$catprf = mysqli_query($conn,"SELECT * from recibos WHERE nif_funcionario = $func_nif");
 
 while ($row = mysqli_fetch_array($catprf)) {
-  echo "<label>NIB</label><input type=\"text\" class=\"form-control\" value=\"$row[func_nib]\" disabled>";
-  echo "<label>NIF</label><input type=\"text\" class=\"form-control\" value=\"$row[func_nif]\" disabled>";
-  echo "<label>NISS</label><input type=\"text\" class=\"form-control\" value=\"$row[func_niss]\" disabled>";
-  echo "<label>Salario Base</label><input type=\"text\" class=\"form-control\" value=\"$row[func_salario]\" disabled>";
+
+
+  echo "<label>NIB</label><input type=\"text\" class=\"form-control\" value=\"$row[id_recibo]\" disabled>";
+  echo "<label>NIF</label><input type=\"text\" class=\"form-control\" value=\"$row[ano]\" disabled>";
+  echo "<label>NISS</label><input type=\"text\" class=\"form-control\" value=\"$row[mes]\" disabled>";
+
 
 }
 
