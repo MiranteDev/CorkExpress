@@ -153,17 +153,19 @@
                                             <?php
                                               include 'connections/conn.php';
 
-                                              $q = mysqli_query($conn,"SELECT * FROM notificacao WHERE estado='0' AND id_funcionario='$_SESSION[userid]'");
+                                              $q = mysqli_query($conn,"SELECT * FROM notificacao WHERE estado='0' AND id_funcionario='$_SESSION[userid]' ORDER BY data desc");
 
                                               while($noti = mysqli_fetch_array($q)){
+                                                echo '<form id="form'.$noti['id_notificacao'].'" action="/corkexpress/indexuser.php?an=4&page=read" method="post">';
+                                                echo "<input type=\"hidden\" name=\"id_notificacao\" value=\"$noti[id_notificacao]\">";
 
-                                                  echo "<a href=\"#\">
+                                                  echo "<a href=\"javascript:;\" onclick=\"document.getElementById('form$noti[id_notificacao]').submit();\">
                                                       <div class=\"btn btn-danger btn-circle m-r-10\"><i class=\"fa fa-link\"></i></div>
                                                       <div class=\"mail-contnet\">
                                                           <h5>$noti[nome]</h5> <span class=\"mail-desc\">$noti[assunto]</span> <span class=\"time\">$noti[data]</span>
                                                       </div>
                                                   </a>";
-
+                                                  echo '</form>';
                                               }
 
                                               include 'connections/diconn.php';
@@ -182,7 +184,7 @@
 
                         <!-- Profile -->
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-muted  " href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="images/users/5.jpg" alt="user" class="profile-pic" /></a>
+                            <a class="nav-link dropdown-toggle text-muted  " href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <span class="fa fa-user"></span> </a>
                             <div class="dropdown-menu dropdown-menu-right animated zoomIn">
                                 <ul class="dropdown-user">
                                     <li><a href="/corkexpress/indexuser.php?an=1"><i class="ti-user"></i> Dados Pessoais</a></li>
@@ -213,7 +215,7 @@
                         <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-user"></i><span class="hide-menu">Notificações</span></a>
                             <ul aria-expanded="false" class="collapse">
                                 <li><a href="/corkexpress/indexuser.php?an=4&page=compose">Enviar</a></li>
-                                <li><a href="/corkexpress/indexuser.php?an=4&page=read">Ver</a></li>
+                                <li><a href="/corkexpress/indexuser.php?an=4&page=inbox">Ver</a></li>
                             </ul>
                         </li>
 
