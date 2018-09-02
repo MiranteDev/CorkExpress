@@ -168,7 +168,13 @@ $(document).ready(function(){
                         <!-- Comment -->
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-muted text-muted  " href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fa fa-bell"></i>
-								<div class="notify"> <span class="heartbit"></span> <span class="point"></span> </div>
+								<div class="notify"> <?php include 'connections/conn.php';
+
+                                $q = mysqli_fetch_array(mysqli_query($conn,"SELECT COUNT(id_notificacao) as total FROM notificacao WHERE estado = '0' AND id_funcionario='0'"));
+                                if($q['total'] != '0'){
+                                  echo "<span class=\"heartbit\"></span> <span class=\"point\"></span>";
+                                }
+                                 include 'connections/diconn.php';?></div>
 							</a>
                             <div class="dropdown-menu dropdown-menu-right mailbox animated zoomIn">
                                 <ul>
@@ -181,17 +187,18 @@ $(document).ready(function(){
                                           <?php
                                             include 'connections/conn.php';
 
-                                            $q = mysqli_query($conn,"SELECT * FROM notificacao WHERE estado='0' AND id_funcionario='0'");
+                                            $q = mysqli_query($conn,"SELECT * FROM notificacao WHERE estado='0' AND id_funcionario='0' ORDER BY data desc");
 
                                             while($noti = mysqli_fetch_array($q)){
-
-                                                echo "<a href=\"#\">
+                                                echo '<form id="form'.$noti['id_notificacao'].'" action="/corkexpress/indexadmin.php?an=9&page=read" method="post">';
+                                                echo "<input type=\"hidden\" name=\"id_notificacao\" value=\"$noti[id_notificacao]\">";
+                                                echo "<a href=\"javascript:;\" onclick=\"document.getElementById('form$noti[id_notificacao]').submit();\">
                                                     <div class=\"btn btn-danger btn-circle m-r-10\"><i class=\"fa fa-link\"></i></div>
                                                     <div class=\"mail-contnet\">
                                                         <h5>$noti[nome]</h5> <span class=\"mail-desc\">$noti[assunto]</span> <span class=\"time\">$noti[data]</span>
                                                     </div>
                                                 </a>";
-
+                                                  echo '</form>';
                                             }
 
                                             include 'connections/diconn.php';
@@ -210,7 +217,7 @@ $(document).ready(function(){
 
                         <!-- Profile -->
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-muted  " href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="images/users/5.jpg" alt="user" class="profile-pic" /></a>
+                            <a class="nav-link dropdown-toggle text-muted  " href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <span class="fa fa-user"></span></a>
                             <div class="dropdown-menu dropdown-menu-right animated zoomIn">
                                 <ul class="dropdown-user">
                                     <li><a href="#"><i class="ti-user"></i> Profile</a></li>
@@ -257,6 +264,13 @@ $(document).ready(function(){
                             <ul aria-expanded="false" class="collapse">
                                 <li><a href="/corkexpress/indexadmin.php?an=7">Adicionar</a></li>
                                 <li><a href="/corkexpress/indexadmin.php?an=8">Listar</a></li>
+
+                            </ul>
+                        </li>
+                        <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-envelope"></i><span class="hide-menu">Notificações</span></a>
+                            <ul aria-expanded="false" class="collapse">
+                                <li><a href="/corkexpress/indexadmin.php?an=9&page=inbox">Minhas Notificações</a></li>
+                                <li><a href="/corkexpress/indexadmin.php?an=9&page=compose">Enviar Notificação</a></li>
 
                             </ul>
                         </li>

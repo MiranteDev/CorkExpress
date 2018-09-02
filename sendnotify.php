@@ -2,6 +2,26 @@
 
     <form role="form" method="post">
 
+      <?php
+      if(!@$_SESSION['userid']){
+        echo '<div class="form-group">
+        <select class="form-control custom-select" name="id_funcionario">';
+        include 'connections/conn.php';
+
+        $dados = mysqli_query($conn, "SELECT id_funcionario,func_nome from funcionarios");
+
+          while($row = mysqli_fetch_array($dados)){
+            echo "
+              <option value=\"$row[id_funcionario]\">$row[func_nome]</option>
+            ";
+
+        }
+        
+        echo '</select>
+        </div>';
+        include 'connections/diconn.php';
+      }
+       ?>
 
         <div class="form-group">
             <input type="text" class="form-control" placeholder="Subject" name="assunto">
@@ -32,7 +52,7 @@
         echo "$data";
 
         mysqli_query($conn, "INSERT INTO notificacao (nome, assunto,msg, data, estado,id_funcionario)
-        VALUES ('Administrador', '$_POST[assunto]', '$_POST[msg]', '$data', '0','1')");
+        VALUES ('Administrador', '$_POST[assunto]', '$_POST[msg]', '$data', '0','$_POST[id_funcionario]')");
 
         include 'connections/diconn.php';
 

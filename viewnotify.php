@@ -1,60 +1,36 @@
-<div class="">
-    <div class="mt-4">
-        <div class="">
-            <ul class="message-list">
-              <?php
-                include 'connections/conn.php';
+<?php
+  if(!@$_POST['id_notificacao']){
+    if(!@$_SESSION['userid']){
+      echo'<meta http-equiv="refresh" content="0;url=/corkexpress/indexadmin.php?an=9&page=inbox"';
+    }else{
+      echo'<meta http-equiv="refresh" content="0;url=/corkexpress/indexuser.php?an=4&page=inbox"';
+    }
+  }else{
+    include 'connections/conn.php';
+    $row = mysqli_fetch_array(mysqli_query($conn,"SELECT * FROM notificacao WHERE id_notificacao='$_POST[id_notificacao]'"));
+    mysqli_query($conn,"UPDATE notificacao SET estado = '1' WHERE id_notificacao='$_POST[id_notificacao]'");
+    include 'connections/diconn.php';
+  }
 
-                if(!@$_SESSION['userid']){
-                  $q = mysqli_query($conn,"SELECT * FROM notificacao WHERE id_funcionario='0'");
-                }else{
-                  $q = mysqli_query($conn,"SELECT * FROM notificacao WHERE id_funcionario='$_SESSION[userid]'");
-
-                }
-
-
-                while($noti = mysqli_fetch_array($q)){
-                    echo "<li class=\"unread\">
-                        <a href=\"email-read.html\">
-                            <div class=\"col-mail col-mail-1\">
-                                <div class=\"checkbox-wrapper-mail\">
-                                    <input type=\"checkbox\" id=\"chk1\">
-                                    <label class=\"toggle\" for=\"chk1\"></label>
-                                </div>
-                                <p class=\"title\">$noti[nome]</p><span class=\"star-toggle fa fa-star-o\"></span>
-                            </div>
-                            <div class=\"col-mail col-mail-2\">
-                                <div class=\"subject\">$noti[assunto] &nbsp;&ndash;&nbsp;
-                                    <span class=\"teaser\">$noti[msg]</span>
-                                </div>
-                                <div class=\"date\">$noti[data]</div>
-                            </div>
-                        </a>
-                    </li>";
-                }
-
-                include 'connections/diconn.php';
-
-                ?>
+?>
+<div class="mt-4">
 
 
 
-            </ul>
-        </div>
+    <div class="media mb-4 mt-1">
+        <div class="media-body">
+            <span class="pull-right"><?php echo "$row[data]"; ?></span>
+            <h6 class="m-0"><b>From</b>: <?php echo "$row[nome]"; ?></h6>
 
-    </div>
-    <!-- panel body -->
-</div>
-<!-- panel -->
-
-<div class="row">
-    <div class="col-7">
-        Showing 1 - 20 of 289
-    </div>
-    <div class="col-5">
-        <div class="btn-group float-right">
-            <button class="btn btn-gradient waves-effect" type="button"><i class="fa fa-chevron-left"></i></button>
-            <button class="btn btn-gradient waves-effect" type="button"><i class="fa fa-chevron-right"></i></button>
         </div>
     </div>
+
+    <h5><b>Assunto</b>:<?php echo "$row[assunto]"; ?></h5>
+
+    <hr/>
+    <p><b>Menssagem</b>:<?php echo "$row[msg]"; ?></p>
+
+
+    <hr/>
+
 </div>

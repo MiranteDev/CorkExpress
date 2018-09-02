@@ -24,20 +24,20 @@
                               <?php @$page = $_REQUEST['page'];
 
                               if(!empty(@$_SESSION['userid'])){
-                                if($page=='read')
+                                if($page=='inbox')
                                 {
                                   echo "<a class=\"btn btn-danger btn-block waves-effect waves-light\" href=\"/corkexpress/indexuser.php?an=4&page=compose\">Enviar Notificação";
                                 }else
                                 {
-                                  echo "<a class=\"btn btn-danger btn-block waves-effect waves-light\" href=\"/corkexpress/indexuser.php?an=4&page=read\">Ver Notificações";
+                                  echo "<a class=\"btn btn-danger btn-block waves-effect waves-light\" href=\"/corkexpress/indexuser.php?an=4&page=inbox\">Ver Notificações";
                                 }
                               }else if(!empty(@$_SESSION['admin'])){
-                                 if($page=='read')
+                                 if($page=='inbox')
                                  {
                                    echo "<a class=\"btn btn-danger btn-block waves-effect waves-light\" href=\"/corkexpress/indexadmin.php?an=9&page=compose\">Enviar Notificação";
                                  }else
                                  {
-                                   echo "<a class=\"btn btn-danger btn-block waves-effect waves-light\" href=\"/corkexpress/indexadmin.php?an=9&page=read\">Ver Notificações";
+                                   echo "<a class=\"btn btn-danger btn-block waves-effect waves-light\" href=\"/corkexpress/indexadmin.php?an=9&page=inbox\">Ver Notificações";
                                  }
                                }
                                  ?></a>
@@ -46,10 +46,10 @@
                                     <?php include 'connections/conn.php';
                                             if(empty(@$_SESSION['userid'])){
                                               $q = mysqli_fetch_array(mysqli_query($conn,"SELECT COUNT(id_notificacao) as total FROM notificacao WHERE estado = '0' AND id_funcionario='0'"));
-                                              echo "<a class=\"list-group-item border-0 text-danger\" href=\"/corkexpress/indexadmin.php?an=9&page=read\"><i class=\"mdi mdi-inbox font-18 align-middle mr-2\"></i><b>Inbox</b>";
+                                              echo "<a class=\"list-group-item border-0 text-danger\" href=\"/corkexpress/indexadmin.php?an=9&page=inbox\"><i class=\"mdi mdi-inbox font-18 align-middle mr-2\"></i><b>Inbox</b>";
                                             }else{
                                               $q = mysqli_fetch_array(mysqli_query($conn,"SELECT COUNT(id_notificacao) as total FROM notificacao WHERE estado = '0' AND id_funcionario='$_SESSION[userid]'"));
-                                              echo "<a class=\"list-group-item border-0 text-danger\" href=\"/corkexpress/indexuser.php?an=4&page=read\"><i class=\"mdi mdi-inbox font-18 align-middle mr-2\"></i><b>Inbox</b>";
+                                              echo "<a class=\"list-group-item border-0 text-danger\" href=\"/corkexpress/indexuser.php?an=4&page=inbox\"><i class=\"mdi mdi-inbox font-18 align-middle mr-2\"></i><b>Inbox</b>";
 
                                             }
                                                       if($q['total'] != '0'){
@@ -57,10 +57,7 @@
                                                     }
 
                                                      include 'connections/diconn.php';?></a>
-                                    <a class="list-group-item border-0" href="#"><i class="mdi mdi-star font-18 align-middle mr-2"></i>Starred</a>
-
-                                    <a class="list-group-item border-0" href="#"><i class="mdi mdi-delete font-18 align-middle mr-2"></i>Trash</a>
-                                </div>
+                                      </div>
 
 
                             </div>
@@ -68,53 +65,7 @@
 
                             <div class="inbox-rightbar">
 
-                                <div role="toolbar" class="">
-                                    <div class="btn-group">
-                                        <button class="btn btn-light waves-effect" type="button"><i class="mdi mdi-archive font-18 vertical-middle"></i></button>
-                                        <button class="btn btn-light waves-effect" type="button"><i class="mdi mdi-alert-octagon font-18 vertical-middle"></i></button>
-                                        <button class="btn btn-light waves-effect" type="button"><i class="mdi mdi-delete-variant font-18 vertical-middle"></i></button>
-                                    </div>
-                                    <div class="btn-group">
-                                        <button aria-expanded="false" data-toggle="dropdown" class="btn btn-light dropdown-toggle waves-effect" type="button">
-                                                                            <i class="mdi mdi-folder font-18 vertical-middle"></i>
-                                                                            <b class="caret m-l-5"></b>
-                                                                        </button>
-                                        <div class="dropdown-menu">
-                                            <span class="dropdown-header">Move to</span>
-                                            <a href="javascript: void(0);" class="dropdown-item">Social</a>
-                                            <a href="javascript: void(0);" class="dropdown-item">Promotions</a>
-                                            <a href="javascript: void(0);" class="dropdown-item">Updates</a>
-                                            <a href="javascript: void(0);" class="dropdown-item">Forums</a>
-                                        </div>
-                                    </div>
-                                    <div class="btn-group">
-                                        <button aria-expanded="false" data-toggle="dropdown" class="btn btn-light dropdown-toggle waves-effect" type="button">
-                                                                            <i class="mdi mdi-label font-18 vertical-middle"></i>
-                                                                            <b class="caret m-l-5"></b>
-                                                                        </button>
-                                        <div class="dropdown-menu">
-                                            <span class="dropdown-header">Label as:</span>
-                                            <a href="javascript: void(0);" class="dropdown-item">Updates</a>
-                                            <a href="javascript: void(0);" class="dropdown-item">Social</a>
-                                            <a href="javascript: void(0);" class="dropdown-item">Promotions</a>
-                                            <a href="javascript: void(0);" class="dropdown-item">Forums</a>
-                                        </div>
-                                    </div>
-
-                                    <div class="btn-group">
-                                        <button aria-expanded="false" data-toggle="dropdown" class="btn btn-light dropdown-toggle waves-effect" type="button">
-                                                                            More
-                                                                            <span class="caret m-l-5"></span>
-                                                                        </button>
-                                        <div class="dropdown-menu">
-                                            <span class="dropdown-header">More Option :</span>
-                                            <a href="javascript: void(0);" class="dropdown-item">Mark as Unread</a>
-                                            <a href="javascript: void(0);" class="dropdown-item">Add to Tasks</a>
-                                            <a href="javascript: void(0);" class="dropdown-item">Add Star</a>
-                                            <a href="javascript: void(0);" class="dropdown-item">Mute</a>
-                                        </div>
-                                    </div>
-                                </div>
+                                
 
                                   <?php
                                   @$page = $_REQUEST['page'];
@@ -124,11 +75,14 @@
                                       // code...
                                       include 'sendnotify.php';
                                       break;
+                                    case 'inbox':
+                                          include 'inboxnotify.php';
+                                        break;
                                     case 'read':
-                                          include 'viewnotify.php';
+                                        include 'viewnotify.php';
                                         break;
                                         default:
-                                        include 'viewnotify.php';
+                                        include 'inboxnotify.php';
                                       break;
                                       }
 
