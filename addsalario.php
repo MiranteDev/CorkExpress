@@ -73,29 +73,22 @@
 
                                                         </tbody>
                                                     </table>
-
-                                                    <?php
-                                                    if(isset($_POST['btemitir']))
+            <?php
+                                                    if(isset($_POST["btemitir"]))
                                                     {
 
+                                                      //Codigo para emviar para a base de dados
                                                       include 'connections/conn.php';
 
-                                                      $dados = mysqli_query($conn, "SELECT * FROM recibos WHERE nif_funcionario = $_POST['func_nif'];
+                                                      mysqli_query($conn,"SELECT FROM recibos Where nif_funcionario = '$_POST[func_nif]'");
 
-                                                       while($row = mysqli_fetch_array($dados)){
-
-                                                      echo'<input class="form-control" type="text" name="id_recibo" value="'.$row['id_recibo'].'">';
-                                                      echo'<input class="form-control" type="text" name="ano" value="'.$row['ano'].'">';
-                                                      echo'<input class="form-control" type="text" name="mes" value="'.$row['mes'].'">';
-
-                                                      }
                                                       include 'connections/diconn.php';
 
 
+                                                      echo '<meta http-equiv="refresh" content="0;url=/corkexpress/indexadmin.php?an=8"';
 
-                                                  }
-                                                   ?>
-
+                                                    }
+?>
                                                 </div>
                                             </div>
                                         </div>

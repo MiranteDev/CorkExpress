@@ -212,7 +212,7 @@
 
                           include 'connections/diconn.php';
 
-                          unset($_SESSION['escalao']);
+                          unset($_SESSION['escalaoss']);
                     //              session_destroy();
 
                           echo '<meta http-equiv="refresh" content="0;url=/corkexpress/indexadmin.php?an=8"';
