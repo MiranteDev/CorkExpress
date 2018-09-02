@@ -72,8 +72,14 @@
                             <span><i class="fa fa-user f-s-40 color-danger"></i></span>
                         </div>
                         <div class="media-body media-text-right">
-                            <h2>847</h2>
-                            <p class="m-b-0">Customer</p>
+                            <h2><?php
+                            include 'connections/conn.php';
+                            $dados = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(id_funcionario) as total from funcionarios"));
+                            echo "$dados[total]";
+                            include 'connections/diconn.php';
+
+                              ?></h2>
+                            <p class="m-b-0">Funcionarios</p>
                         </div>
                     </div>
                 </div>
