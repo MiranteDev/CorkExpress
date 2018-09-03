@@ -218,6 +218,11 @@
                                 <li><a href="/corkexpress/indexuser.php?an=4&page=inbox">Ver</a></li>
                             </ul>
                         </li>
+                        <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-user"></i><span class="hide-menu">Recibos</span></a>
+                            <ul aria-expanded="false" class="collapse">
+                                <li><a href="/corkexpress/indexuser.php?an=5">Ver</a></li>
+                            </ul>
+                        </li>
 
 
                     </ul>
@@ -251,20 +256,8 @@
 
                 break;
                 case '5':
-                include 'addcategoria.php';
+                include 'verrecibo.php';
                 break;
-
-                case '6':
-                  include 'listcategoria.php';
-                  break;
-
-                  case '7':
-                    include 'addescalao.php';
-                    break;
-
-                    case '8':
-                      include 'listescalao.php';
-                      break;
 
             default:
                 include 'home.php';
