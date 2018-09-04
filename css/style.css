@@ -700,7 +700,7 @@ h3,
 h4,
 h5,
 h6.h1 {
-  color: #455a64;
+  color: black;
 }
 .dib {
   display: inline-block;
@@ -5403,7 +5403,7 @@ tbody tr th {
 }
 tbody tr td {
   font-family: 'Poppins', sans-serif;
-  color: #99abb4;
+  color: black;
 }
 tbody tr td:last-child {
   text-align: right;
