@@ -49,13 +49,13 @@ $(document).ready(function(){
 
         <script>
     $(document).ready(function(){
-        $('#funcionario').change(function(){
+        $('#turno_mensal').change(function(){
                 //Selected value
-                var funcionarioid = $('#funcionario').val();
+                var turno = $('#turno_mensal').val();
+                var id = $('#id').val();
                 //alert("value in js "+distritosid);
-
                 //Ajax for calling php function
-                $.post('contablidade.php', { funcionarioid: funcionarioid }, function(data){
+                $.post('contas.php', {turno: turno , id:id}, function(data){
                    // alert('ajax completed. Response:  '+data);
                     //do after submission operation in DOM
                     $('#contablidade').html(data);
@@ -331,7 +331,7 @@ $(document).ready(function(){
                           break;
 
                           case '12':
-                            include '.php';
+                            include 'versalario.php';
                             break;
 
             default:

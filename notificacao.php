@@ -65,7 +65,7 @@
 
                             <div class="inbox-rightbar">
 
-                                
+
 
                                   <?php
                                   @$page = $_REQUEST['page'];
@@ -102,6 +102,6 @@
     </div>
     <!-- End Container fluid  -->
     <!-- footer -->
-    <footer class="footer"> © 2018 All rights reserved. Template designed by <a href="https://colorlib.com">Colorlib</a></footer>
+    <footer class="footer"> © 2018 All rights reserved by João Vilares & João Mirante  </footer>
     <!-- End footer -->
 </div>
