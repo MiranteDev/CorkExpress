@@ -128,8 +128,8 @@
                                           </div>
                                           <br>
                                       <div class="form-actions">
-                                          <button type="submit" name="bt_save" class="btn btn-info"> <i class="fa fa-check"></i> Save</button>
-                                          <button type="button" class="btn btn-inverse">Cancel</button>
+                                          <button type="submit" name="bt_save" class="btn btn-info"> <i class="fa fa-check"></i> Emitir Recibo </button>
+                                          <button type="button" class="btn btn-inverse">Cancelar</button>
                                       </div>
                                   </form>
                                   <?php
