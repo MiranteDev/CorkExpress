@@ -73,10 +73,6 @@
                                               <!--/span-->
                                           </div>
 
-
-
-
-
                                           <h3 class="box-title m-t-40">Contablidade</h3>
                                           <hr>
                                           <div class="row">
@@ -85,8 +81,6 @@
                                                       <label>Salario Base</label>
                                                       <input type="text" value="<?php echo "$dados[func_salario]"; ?>  €" name="func_salario"  class="form-control" disabled>
                                                   </div>
-
-
 
                                                   </select>
 
