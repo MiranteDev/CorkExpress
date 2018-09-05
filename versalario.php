@@ -13,7 +13,10 @@
   }
 
 ?>
-
+<script>
+  $('#ano').val(<?php echo $_GET['ano'] ?>);
+  $('#mes').val(<?php echo $_GET['mes'] ?>);
+</script>
 <div class="page-wrapper">
 
   <div class="container-fluid">

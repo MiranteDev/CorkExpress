@@ -1,3 +1,4 @@
+
 <?php
   if(!@$_POST['ano'] && !@$_POST['mes']){
     if(!@$_SESSION['userid']){
@@ -8,6 +9,11 @@
   }else{
     include 'connections/conn.php';
     $row = mysqli_fetch_array(mysqli_query($conn,"SELECT * FROM recibos WHERE ano='$_POST[ano]' AND mes='$_POST[mes]' AND id_funcionario='$_SESSION[userid]'"));
+
+    if(!$row){
+      echo'<meta http-equiv="refresh" content="0;url=/corkexpress/indexuser.php?an=5&page=notfound&ano='.$_POST['ano'].'&mes='.$_POST['mes'].'"';
+    }
+
     $func = mysqli_fetch_array(mysqli_query($conn,"SELECT * FROM funcionarios WHERE id_funcionario='$_SESSION[userid]'"));
     $cat = mysqli_fetch_array(mysqli_query($conn,"SELECT * FROM categoria_profissional WHERE id_categoria='$func[id_categoria]'"));
 
@@ -22,7 +28,7 @@
         <div class="card-body">
             <div class="row">
           <div class="col">
-              <h1><?php echo "$func[func_nome]"; ?></h1>
+              <h1><?php echo "$row[nome_funcionario]"; ?></h1>
           </div>
 
 
@@ -47,9 +53,9 @@
                                       <tr>
                                           <th scope="row">01- <?php echo "$_POST[mes]-$_POST[ano]"; ?></th>
                                           <td><?php echo "$cat[descricao_categoria]"; ?></td>
-                                          <td scope="row" ><?php echo "$func[func_niss]"; ?> </td>
-                                          <td scope="row" ><?php echo "$func[func_nif]"; ?></td>
-                                          <td class="color-primary"></td>
+                                          <td scope="row" ><?php echo "$row[niss_funcionario]"; ?> </td>
+                                          <td scope="row" ><?php echo "$row[nif_funcionario]"; ?></td>
+                                          <td class="color-primary"><?php echo ($func['func_salario']/$row['desconto_irc']); ?> %</td>
                                       </tr>
 
                                   </tbody>
@@ -85,7 +91,7 @@
                                           <tr>
                                               <th>Remuneração</th>
                                               <td>176h</td>
-                                              <td><?php echo ($func['func_salario']/176) ?></td>
+                                              <td><?php echo round(($func['func_salario']/176),2) ?></td>
                                               <td><?php echo "$func[func_salario]"; ?></td>
                                               <td class="color-primary"></td>
                                               <td></td>
@@ -100,11 +106,19 @@
                                           </tr>
                                           <tr>
                                               <th>Segurança Social</th>
-                                              <td>539€</td>
+                                              <td><?php echo "$row[valor_bruto]"; ?></td>
                                               <td></td>
                                               <td></td>
-                                              <td class="color-primary">11</td>
-                                              <td>59€</td>
+                                              <td class="color-primary"><?php echo ($func['func_salario']/$row['desconto_ss']); ?></td>
+                                              <td><?php echo $row['desconto_ss']; ?> €</td>
+                                          </tr>
+                                          <tr>
+                                              <th>IRS</th>
+                                              <td><?php echo "$row[valor_bruto]"; ?></td>
+                                              <td></td>
+                                              <td></td>
+                                              <td class="color-primary"><?php echo ($func['func_salario']/$row['desconto_irc']); ?></td>
+                                              <td><?php echo $row['desconto_irc']; ?> €</td>
                                           </tr>
                                           <tr>
                                               <th>Totais</th>
@@ -112,7 +126,7 @@
                                               <td></td>
                                               <td>618€</td>
                                               <td class="color-primary"</td>
-                                              <td>69€</td>
+                                              <td><?php echo round((($func['func_salario']/$row['desconto_irc'])+($func['func_salario']/$row['desconto_ss'])),2); ?></td>
                                           </tr>
 
                                       </tbody>
@@ -123,3 +137,7 @@
       </div>
 
   </div>
+  <script>
+    $('#ano').val(<?php echo $_POST['ano'] ?>);
+    $('#mes').val(<?php echo $_POST['mes'] ?>);
+  </script>

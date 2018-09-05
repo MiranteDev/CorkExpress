@@ -1,3 +1,7 @@
+<script>
+  $('#ano').val(<?php echo @$_GET['ano'] ?>);
+  $('#mes').val(<?php echo @$_GET['mes'] ?>);
+</script>
 <div class="page-wrapper">
 <div class="container-fluid">
     <!-- Start Page Content -->
@@ -7,6 +11,7 @@
     </div>
 
     <hr>
+    <form method="post" action="/corkexpress/indexuser.php?an=5&page=recibo">
     <div class="row">
       <div class="col">
 
@@ -18,10 +23,10 @@
   <div class="input-group-prepend">
     <span class="input-group-text btn-info" style="color:white;" id="basic-addon1">Ano</span>
   </div>
-  <form method="post" action="/corkexpress/indexuser.php?an=5&page=recibo">
 
 
-  <select class="form-control custom-select" name="ano"  tabindex="1">
+
+  <select class="form-control custom-select" name="ano" id="ano"  tabindex="1">
       <?php for($i=2015;$i<=2020;$i++){echo "<option value=\"$i\">$i</option>";} ?>
   </select></div>
 
@@ -31,7 +36,7 @@
 <div class="input-group-prepend">
 <span class="input-group-text btn-info" style="color:white;" id="basic-addon1">Mês</span>
 </div>
-<select class="form-control custom-select" name="mes"  tabindex="1">
+<select class="form-control custom-select" name="mes" id="mes"  tabindex="1">
   <?php for($i=1;$i<=12;$i++){echo "<option value=\"$i\">$i</option>";} ?>
 
 </select></div>
