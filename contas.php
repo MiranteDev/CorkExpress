@@ -32,20 +32,13 @@ $liquido = $bruto-$ss-$irs;
       <div class="col-md-6">
         <div class="form-group">
             <label>Desconto Segurança Social</label>
-            <input type="text" value= "'.$ss.'€" max="21" class="form-control" disabled>
+            <input type="text" value= "'.$ss.'€" max="21" name="dss" class="form-control" disabled>
         </div>
         <div class="form-group">
             <label>Desconto IRS</label>
-            <input type="text" value="'.$irs.'€" max="21" class="form-control" disabled>
+            <input type="text" value="'.$irs.'€" max="21" name="dirs" class="form-control" disabled>
         </div>
-        <div class="form-group">
-            <label>Ano</label>
-            <input type="text" value="" max="21" class="form-control" disabled>
-        </div>
-        <div class="form-group">
-            <label>Mes</label>
-            <input type="text" value="" max="21" class="form-control" disabled>
-        </div>
+
       </div>
 </div>';
 
