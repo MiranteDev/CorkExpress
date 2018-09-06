@@ -27,9 +27,9 @@ document.querySelector('.sweet-confirm').onclick = function(){
 $('.sweet-success-cancel').click(function(){
   var id =$(this).val();
     swal({
-            title: "Deseja Mesmo Apagar Esse Chavalo"
+            title: "Deseja Mesmo Apagar Esse Chavalo",
             text: "Não será possivel reverter esta decisão",
-            type: "Aviso",
+            type: "warning",
             showCancelButton: true,
             confirmButtonColor: "#DD6B55",
             confirmButtonText: "Sim, Eu Desejo !!",
