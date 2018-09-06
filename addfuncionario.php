@@ -4,9 +4,10 @@
 
   if(!$an){
     echo'<meta http-equiv="refresh" content="0;url=/corkexpress/indexadmin.php?an=1"';
-  }
+  }dfsdfsdfsdfsd
 */
 ?>
+
 <div class="page-wrapper">
   <div class="container-fluid">
                   <!-- Start Page Content -->
@@ -151,7 +152,7 @@
                                               ,'$_POST[func_tipodepart]','$_POST[id_categoria]'
                                             )");
                                               $ultimo = mysqli_insert_id($conn);
-                                              
+
                                             mysqli_query($conn,"INSERT INTO login (username,password,tipo,id_funcionario) VALUES (
                                               '$_POST[username]','$_POST[password]','0','$ultimo'
                                             )");
