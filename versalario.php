@@ -44,14 +44,14 @@
                                               <div class="col-md-6">
                                                   <div class="form-group">
                                                       <label>BI</label>
-                                                      <input type="text" value="<?php echo "$dados[func_bi]"; ?>" name="bi_p" placeholder="Introduza o seu bi" max="8" class="form-control" disabled>
+                                                      <input type="text" value="<?php echo "$dados[func_bi]"; ?>" name="bi_p" placeholder="Introduza o seu bi" max="8" class="form-control" readonly>
                                                   </div>
                                               </div>
                                               <!--/span-->
                                               <div class="col-md-6">
                                                   <div class="form-group">
                                                       <label>NIF</label>
-                                                      <input type="text" value="<?php echo "$dados[func_nif]"; ?>" name="nif_p" placeholder="Introduza o seu nif" max="9" class="form-control" disabled>
+                                                      <input type="text" value="<?php echo "$dados[func_nif]"; ?>" name="nif_p" placeholder="Introduza o seu nif" max="9" class="form-control" readonly>
                                                   </div>
                                               </div>
                                               <!--/span-->
@@ -60,14 +60,14 @@
                                               <div class="col-md-6">
                                                   <div class="form-group">
                                                       <label>NISS</label>
-                                                      <input type="text" value="<?php echo "$dados[func_niss]"; ?>" name="niss_p" placeholder="Introduza o seu niss" max="12" class="form-control" disabled>
+                                                      <input type="text" value="<?php echo "$dados[func_niss]"; ?>" name="niss_p" placeholder="Introduza o seu niss" max="12" class="form-control" readonly>
                                                   </div>
                                               </div>
                                               <!--/span-->
                                               <div class="col-md-6">
                                                   <div class="form-group">
                                                       <label>NIB</label>
-                                                      <input type="text" value="<?php echo "$dados[func_nib]"; ?>" name="nib_p" placeholder="Introduza o seu nib" max="21" class="form-control" disabled>
+                                                      <input type="text" value="<?php echo "$dados[func_nib]"; ?>" name="nib_p" placeholder="Introduza o seu nib" max="21" class="form-control" readonly>
                                                   </div>
                                               </div>
                                               <!--/span-->
@@ -79,7 +79,7 @@
                                               <div class="col-md-6 ">
                                                   <div class="form-group">
                                                       <label>Salario Base</label>
-                                                      <input type="text" value="<?php echo "$dados[func_salario]"; ?>  €" name="func_salario"  class="form-control" disabled>
+                                                      <input type="text" value="<?php echo "$dados[func_salario]"; ?>  €" name="func_salario"  class="form-control" readonly>
                                                   </div>
 
                                                   </select>
@@ -135,7 +135,7 @@
                                   <?php
 
 
-                                        if(isset($_POST["bt_save"])){
+                                        if(isset($_POST['bt_save'])){
                                           include 'connections/conn.php';
 
 

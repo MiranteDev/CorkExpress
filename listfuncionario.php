@@ -51,24 +51,21 @@
                             echo '<td>Operacional</td>';
                         }
                         echo '<td>'.$row['func_salario'].' €</td>
-                        <td>
-                        <div class="sweetalert m-t-15">
-                            <form>
-                            <input type="hidden" value="'.$row['id_funcionario'].'">
-                            <input type="submit" class="btn btn-info btn-rounded btn-block" name="bt_editar" value="Editar">
-                            </form>
-                            </div>
-                            <div class="sweetalert m-t-15">
-                            <button type="button" id="2" value="'.$row['id_funcionario'].'" class="btn btn-danger btn-rounded btn-block">Apagar</button>
-                        </div>
-                        </td>
-                        </tr>';
+                        ';
 
                           $i+=1;
-                    }
 
-                    include 'connections/diconn.php';
+
+
                    ?>
+                   <td>
+                     <div class="sweetalert m-t-15">
+                     <button type="button" id="2" value="<?php echo $row['id_funcionario'];?>" class="btn btn-warning btn sweet-success-cancel">Apagar</button>
+                 </div>
+                   </td>
+                   </tr>
+                 <?php } include 'connections/diconn.php';?>
+
 
 
                 </tbody>
