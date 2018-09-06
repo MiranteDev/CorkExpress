@@ -27,13 +27,13 @@ document.querySelector('.sweet-confirm').onclick = function(){
 $('.sweet-success-cancel').click(function(){
   var id =$(this).val();
     swal({
-            title: "Are you sure to delete ?",
-            text: "You will not be able to recover this imaginary file !!",
-            type: "warning",
+            title: "Deseja Mesmo Apagar Esse Chavalo"
+            text: "Não será possivel reverter esta decisão",
+            type: "Aviso",
             showCancelButton: true,
             confirmButtonColor: "#DD6B55",
-            confirmButtonText: "Yes, delete it !!",
-            cancelButtonText: "No, cancel it !!",
+            confirmButtonText: "Sim, Eu Desejo !!",
+            cancelButtonText: "Não, sou maricas, não me atrevo !!",
             closeOnConfirm: false,
             closeOnCancel: false
         },

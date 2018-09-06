@@ -138,6 +138,12 @@
                                         if(isset($_POST["bt_save"])){
                                           include 'connections/conn.php';
 
+
+
+                                            $verificacao = 
+
+
+
                                             mysqli_query($conn,"INSERT INTO recibos (ano,mes,nome_funcionario,nib_funcionario
                                             ,nif_funcionario,niss_funcionario,salario_base,turno_mensal,desconto_ss,desconto_irc,valor_liquido,valor_bruto) VALUES (
                                               '$_POST[ano_p]','$_POST[mes_p]','$_POST[funcionario_p]','$_POST[nib_p]'
