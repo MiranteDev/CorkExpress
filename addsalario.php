@@ -20,15 +20,7 @@
 
                                             </div>
                                             <hr>
-                                            <form action="" method="post" novalidate="novalidate">
-                                                <div class="form-group">
 
-                  </div>
-                  <div class="form-group has-success">
-
-                      <label class="control-label">Funcionários</label>
-
-                              </div>
                               <div class="table-responsive m-t-40">
                                   <table id="myTable" class="table table-bordered table-striped">
                                       <thead>
@@ -48,23 +40,22 @@
                                                           <?php
                                                             include 'connections/conn.php';
 
-                                                            $dados = mysqli_query($conn, "SELECT id_funcionario,func_nome,func_nif,id_categoria,func_tipodepart,func_salario from funcionarios");
+                                                            $dadossalary = mysqli_query($conn, "SELECT id_funcionario,func_nome,func_nif,id_categoria,func_tipodepart,func_salario from funcionarios");
 
-                                                              $i = 0;
-                                                              while($row = mysqli_fetch_array($dados)){
-                                                                echo '<form method="post" action="/corkexpress/indexadmin.php?an=12"><tr><td style="text-align:left;">'.$row['func_nome'].'</td>
-                                                                <td>'.$row['func_nif'].'</td>';
-                                                                echo '';
-                                                                echo '
 
-                                                                  <td style="text-align:left;">'.$row['func_salario'].'
-                                                                </td><td>
-                                                                  <input type="hidden" name="id_funcionario" value="'.$row['id_funcionario'].'">
-                                                                  <button type="submit" name="btemitir" class="btn btn-info m-b-10 m-l-5">Emitir Recibo</button>
+                                                              while($rowsalary = mysqli_fetch_array($dadossalary)){
+                                                                echo '<tr><td style="text-align:left;">'.$rowsalary['func_nome'].'</td>
+                                                                <td>'.$rowsalary['func_nif'].'</td>';
+
+                                                                echo '<td style="text-align:left;">'.$rowsalary['func_salario'].'</td>';
+                                                                echo '<td><form method="post" action="/corkexpress/indexadmin.php?an=12">
+                                                                  <input type="hidden" name="id_funcionario" value="'.$rowsalary['id_funcionario'].'">
+                                                                  <input type="submit" name="btemitir" class="btn btn-info m-b-10 m-l-5" value="Emitir Recibo">
+                                                                  </form>
                                                                 </td>
-                                                                </tr></form>';
+                                                                </tr>';
 
-                                                                  $i+=1;
+
                                                             }
 
                                                             include 'connections/diconn.php';
