@@ -53,6 +53,11 @@
                     <a class="navbar-brand" href="index.html">
                         <!-- Logo icon -->
                         <b><img src="images/logo.png" alt="homepage" class="dark-logo" /></b>
+                        <h2><?php
+
+                          echo "$_SESSION[username]";
+
+                          ?></h2>
                         <!--End Logo icon -->
                         <!-- Logo text -->
                         <span><img src="images/logo-text.png" alt="homepage" class="dark-logo" /></span>

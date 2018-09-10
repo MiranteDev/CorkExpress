@@ -53,6 +53,13 @@ function salbruto($salario,$turno,$id)
 
   }
 
+  if($turno == '4'){
+
+
+    $total = $row['func_salario'];
+
+  }
+
 
       include 'connections/diconn.php';
 

@@ -26,9 +26,11 @@ if(!$_SESSION['admin']){
     <link href="css/lib/calendar2/pignose.calendar.min.css" rel="stylesheet">
     <link href="css/lib/owl.carousel.min.css" rel="stylesheet" />
     <link href="css/lib/owl.theme.default.min.css" rel="stylesheet" />
+
     <link href="css/helper.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
     <script>
 $(document).ready(function(){
     $('#funcionario').change(function(){
