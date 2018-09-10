@@ -140,16 +140,17 @@
 
 
 
-                                            $verificacao = 
+                                              // code...
+                                              mysqli_query($conn,"INSERT INTO recibos (ano,mes,nome_funcionario,nib_funcionario
+                                              ,nif_funcionario,niss_funcionario,salario_base,turno_mensal,desconto_ss,desconto_irc,valor_liquido,valor_bruto) VALUES (
+                                                '$_POST[ano_p]','$_POST[mes_p]','$_POST[funcionario_p]','$_POST[nib_p]'
+                                                ,'$_POST[nif_p]','$_POST[niss_p]','$_POST[func_salario]'
+                                                ,'$_POST[turno_mensal]','$_POST[dss]','$_POST[dirs]','$_POST[valor_liquido]','$_POST[valor_bruto]'
+                                              ) WHERE ano,mes not exists ");
 
 
 
-                                            mysqli_query($conn,"INSERT INTO recibos (ano,mes,nome_funcionario,nib_funcionario
-                                            ,nif_funcionario,niss_funcionario,salario_base,turno_mensal,desconto_ss,desconto_irc,valor_liquido,valor_bruto) VALUES (
-                                              '$_POST[ano_p]','$_POST[mes_p]','$_POST[funcionario_p]','$_POST[nib_p]'
-                                              ,'$_POST[nif_p]','$_POST[niss_p]','$_POST[func_salario]'
-                                              ,'$_POST[turno_mensal]','$_POST[dss]','$_POST[dirs]','$_POST[valor_liquido]','$_POST[valor_bruto]'
-                                            )");
+
 
                                           include 'connections/diconn.php';
                                         }
