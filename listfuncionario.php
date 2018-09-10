@@ -59,6 +59,10 @@
 
                    ?>
                    <td>
+                     <form method="post" action="/corkexpress/indexadmin.php?an=13">
+                        <input type="hidden" name="id_funcionario" value="<?php echo $row['id_funcionario']; ?>">
+                        <input type="submit" name="bt_editar" class="btn btn-success" value="Editar">
+                     </form>
                      <div class="sweetalert m-t-15">
                      <button type="button" id="2" value="<?php echo $row['id_funcionario'];?>" class="btn btn-warning btn sweet-success-cancel">Apagar</button>
                  </div>
@@ -85,6 +89,8 @@
 
               include 'connections/diconn.php';
             } ?>
+
+
 
         </div>
     </div>

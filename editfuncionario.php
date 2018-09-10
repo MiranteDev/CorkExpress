@@ -12,9 +12,18 @@
 <div class="page-wrapper">
   <?php
     include 'connections/conn.php';
-    $dados = mysqli_fetch_array(mysqli_query($conn,"SELECT func_nome,func_bi,func_nif,func_niss
-    ,func_nib,func_datan,func_salario,func_tipodepart,id_categoria FROM funcionarios WHERE id_funcionario= '$_SESSION[userid]'"));
-    if(!$dados){
+
+    if(!$_POST['id_funcionario']){
+      $dados = mysqli_fetch_array(mysqli_query($conn,"SELECT func_nome,func_bi,func_nif,func_niss
+      ,func_nib,func_datan,func_salario,func_tipodepart,id_categoria FROM funcionarios WHERE id_funcionario= '$_SESSION[userid]'"));
+        $y=0;
+    }else{
+      $dados = mysqli_fetch_array(mysqli_query($conn,"SELECT func_nome,func_bi,func_nif,func_niss
+      ,func_nib,func_datan,func_salario,func_tipodepart,id_categoria FROM funcionarios WHERE id_funcionario= '$_POST[id_funcionario]'"));
+      $y=1;
+    }
+
+      if(!$dados){
       $x=1;
     }else{
       $x=2;
@@ -27,7 +36,7 @@
                       <div class="col">
                           <div class="card card-outline-info">
                               <div class="card-header">
-                                  <h4 class="m-b-0 text-white">Funcionario, <?php echo "$_SESSION[userid]"; ?></h4>
+                                  <h4 class="m-b-0 text-white">Funcionario, <?php echo "$dados[func_nome]"; ?></h4>
                               </div>
                               <div class="card-body">
                                   <form method="post">
@@ -146,12 +155,19 @@
                                         if(isset($_POST["bt_save"])){
                                             include 'connections/conn.php';
 
-                                            mysqli_query($conn,"INSERT INTO funcionarios (func_nome,func_bi,func_nif,func_niss
-                                            ,func_nib,func_datan,func_salario,func_tipodepart,id_categoria) VALUES (
-                                              '$_POST[func_nome]','$_POST[func_bi]','$_POST[func_nif]','$_POST[func_niss]'
-                                              ,'$_POST[func_nib]','$_POST[func_datan]','$_POST[func_salario]'
-                                              ,'$_POST[func_tipodepart]','$_POST[id_categoria]'
-                                            )");
+                                            if($y==0){
+                                              mysqli_query($conn,"UPDATE funcionarios set func_nome ='$_POST[func_nome]'
+                                                                    ,func_bi = '$_POST[func_bi]'
+                                                                     ,func_nif = '$_POST[func_nif]'
+                                                                     ,func_niss = '$_POST[func_niss]'
+                                                                     ,func_nib = '$_POST[func_nib]'
+                                                                     ,func_datan = '$_POST[func_datan]'
+                                                                     ,func_salario='$_POST[func_salario]'
+                                                                     ,func_tipodepart = '$_POST[func_tipodepart]'
+                                                                     ,id_categoria = '$_POST[id_categoria]')");
+                                            }
+
+
 
                                           include 'connections/diconn.php';
                                         }
