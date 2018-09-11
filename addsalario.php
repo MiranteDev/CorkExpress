@@ -50,7 +50,7 @@
                                                                 echo '<td style="text-align:left;">'.$rowsalary['func_salario'].'</td>';
                                                                 echo '<td><form method="post" action="/corkexpress/indexadmin.php?an=12">
                                                                   <input type="hidden" name="id_funcionario" value="'.$rowsalary['id_funcionario'].'">
-                                                                  <input type="submit" name="btemitir" class="btn btn-info m-b-10 m-l-5" value="Emitir Recibo">
+                                                                  <input type="submit" name="btemitir" class="btn btn-success m-b-10 m-l-5" value="Emitir Recibo">
                                                                   </form>
                                                                 </td>
                                                                 </tr>';

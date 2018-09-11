@@ -106,6 +106,58 @@
             </div>
         </div>
 
+        <div class="row">
+          <div class="col-lg-6">
+              <div class="card">
+                  <div class="card-title">
+                      <h4>Pagamentos processados no ultimo mês </h4>
+                  </div>
+                  <div class="card-body">
+                      <div class="table-responsive">
+                          <table class="table">
+                              <thead>
+                                  <tr>
+                                      <th>Nome</th>
+                                      <th>NIF</th>
+                                      <th>Total a Receber</th>
+                                      <th>Estado</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                <?php
+
+                                include 'connections/conn.php';
+
+                                include 'connections/conn.php';
+                                $year = date('Y');
+                                $mes = date('m');
+                                $dados = mysqli_query($conn,"SELECT recibos.nome_funcionario as nome,recibos.nif_funcionario as nif,recibos.valor_liquido as receber FROM recibos left join funcionarios on recibos.id_funcionario = funcionarios.id_funcionario where recibos.mes = '$mes' and recibos.ano = '$year'");
+
+
+                                  while($row = mysqli_fetch_array($dados)){
+                                      echo "<tr>
+                                          <td>$row[nome]</td>
+                                          <td><span>$row[nif]</span></td>
+                                          <td><span>$row[receber] €</span></td>
+                                          <td><span class=\"badge badge-success\">Efectudado</span></td>
+                                      </tr>";
+
+                                  }
+
+
+                                   include 'connections/diconn.php';
+
+
+                                  ?>
+
+                              </tbody>
+                          </table>
+                      </div>
+                  </div>
+              </div>
+          </div>
+        </div>
+
     <!-- End Container fluid  -->
     <!-- footer -->
     <footer class="footer"> © 2018 All rights reserved by João Vilares & João Mirante</a></footer>
