@@ -129,13 +129,15 @@
                                               <div class="input-group-prepend">
                                         <span class="input-group-text btn-info" style="color:white;" id="basic-addon1">Mês</span>
                                               </div>
-                                        <select class="form-control custom-select" name="mes_p"  tabindex="1">
+                                        <select class="form-control custom-select" name="mes_p" id="mes"  tabindex="1">
                                           <?php for($i=1;$i<=12;$i++){echo "<option value=\"$i\">$i";} ?>
                                           <option value="13">Subsidio Natal
                                           <option value="14">Subsidio Férias
                                         </option>"
                                         </select>
+
                                           </div>
+
                                           <?php
                                             if(@$_REQUEST['page']=='error')
                                             echo "<br><div class=\"alert alert-danger\">Já foi Processado</div>";
