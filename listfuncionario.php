@@ -1,12 +1,5 @@
 
-<?php/*
-  @$an = $_REQUEST['an'];
 
-  if(!$an){
-    echo'<meta http-equiv="refresh" content="0;url=/corkexpress/indexadmin.php?an=1"';
-  }
-*/
-?>
 <div class="page-wrapper">
   <div class="container-fluid">
 
@@ -93,7 +86,15 @@
 
 
         </div>
+
     </div>
+
 </div>
+<?php
+if(@$_REQUEST['page']=='sucesso'){
+  echo "<div class=\"alert alert-info\">Atualizado com Sucesso!</div>";
+}
+?>
 </div>
+
 </div>

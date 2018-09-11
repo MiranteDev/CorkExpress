@@ -53,7 +53,7 @@
                     <a class="navbar-brand" href="index.html">
                         <!-- Logo icon -->
                         <b><img src="images/logo.png" alt="homepage" class="dark-logo" /></b>
-                        
+
                         <!--End Logo icon -->
                         <!-- Logo text -->
                         <span><img src="images/logo-text.png" alt="homepage" class="dark-logo" /></span>
@@ -210,7 +210,6 @@
                         <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-briefcase"></i><span class="hide-menu">Pessoal</span></a>
                             <ul aria-expanded="false" class="collapse">
                                 <li><a href="/corkexpress/indexuser.php?an=1">Dados Pessoais</a></li>
-                                <li><a href="/corkexpress/indexuser.php?an=2">Editar Dados</a></li>
                             </ul>
                         </li>
                         <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-user"></i><span class="hide-menu">Notificações</span></a>
@@ -243,9 +242,6 @@
               // code...
               include 'editfuncionario.php';
               break;
-            case '2':
-                  include 'addsalario.php';
-                break;
             case '3':
                   // code...
                   include 'addfuncionario.php';
@@ -261,7 +257,7 @@
                 break;
 
             default:
-                include 'home.php';
+                include 'homeuser.php';
               // code...
               break;
           }

@@ -143,11 +143,6 @@
                                     if(isset($_POST['bt_save'])){
                                       include 'connections/conn.php';
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 115c8265e225ee22893dc1d75509be8a8cec7cb6
                                         mysqli_query($conn,"INSERT INTO recibos (ano,mes,nome_funcionario,nib_funcionario
                                         ,nif_funcionario,niss_funcionario,salario_base,turno_mensal,desconto_ss,desconto_irc,valor_liquido,valor_bruto,id_funcionario,subsidio_turno) VALUES (
                                           '$_POST[ano_p]','$_POST[mes_p]','$_POST[func_nome]','$_POST[nib_p]'

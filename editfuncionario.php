@@ -14,11 +14,11 @@
     include 'connections/conn.php';
 
     if(!$_POST['id_funcionario']){
-      $dados = mysqli_fetch_array(mysqli_query($conn,"SELECT func_nome,func_bi,func_nif,func_niss
+      $dados = mysqli_fetch_array(mysqli_query($conn,"SELECT id_funcionario,func_nome,func_bi,func_nif,func_niss
       ,func_nib,func_datan,func_salario,func_tipodepart,id_categoria FROM funcionarios WHERE id_funcionario= '$_SESSION[userid]'"));
         $y=0;
     }else{
-      $dados = mysqli_fetch_array(mysqli_query($conn,"SELECT func_nome,func_bi,func_nif,func_niss
+      $dados = mysqli_fetch_array(mysqli_query($conn,"SELECT id_funcionario,func_nome,func_bi,func_nif,func_niss
       ,func_nib,func_datan,func_salario,func_tipodepart,id_categoria FROM funcionarios WHERE id_funcionario= '$_POST[id_funcionario]'"));
       $y=1;
     }
@@ -40,6 +40,7 @@
                               </div>
                               <div class="card-body">
                                   <form method="post">
+                                    <input type="hidden" name="id_funcionario" value="<?php echo "$dados[id_funcionario]"; ?>">
                                       <div class="form-body">
                                           <h3 class="card-title m-t-15">Informaçãos Pessoais</h3>
                                           <hr>
@@ -145,8 +146,12 @@
 
                                       </div>
                                       <div class="form-actions">
+                                        <?php
+                                            if($y==1){
+                                          ?>
                                           <button type="submit" name="bt_save" class="btn btn-info"> <i class="fa fa-check"></i> Save</button>
                                           <button type="button" class="btn btn-inverse">Cancel</button>
+                                        <?php } ?>
                                       </div>
                                   </form>
                                   <?php
@@ -155,7 +160,7 @@
                                         if(isset($_POST["bt_save"])){
                                             include 'connections/conn.php';
 
-                                            if($y==0){
+                                            if($y==1){
                                               mysqli_query($conn,"UPDATE funcionarios set func_nome ='$_POST[func_nome]'
                                                                     ,func_bi = '$_POST[func_bi]'
                                                                      ,func_nif = '$_POST[func_nif]'
@@ -164,8 +169,10 @@
                                                                      ,func_datan = '$_POST[func_datan]'
                                                                      ,func_salario='$_POST[func_salario]'
                                                                      ,func_tipodepart = '$_POST[func_tipodepart]'
-                                                                     ,id_categoria = '$_POST[id_categoria]')");
+                                                                     ,id_categoria = '$_POST[id_categoria]' where id_funcionario='$_POST[id_funcionario]'");
                                             }
+                                            echo'<meta http-equiv="refresh" content="0;url=/corkexpress/indexadmin.php?an=4&page=sucesso"';
+                                            
 
 
 
