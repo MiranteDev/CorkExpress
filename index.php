@@ -15,7 +15,7 @@ session_destroy();
     <meta name="author" content="">
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
-    <title>Ela - Bootstrap Admin Dashboard Template</title>
+    <title>Cork Express </title>
     <!-- Bootstrap Core CSS -->
     <link href="css/lib/bootstrap/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
@@ -27,6 +27,14 @@ session_destroy();
     <script src="https:**oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https:**oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
+<style media="screen">
+body {
+   background-image: url("images/bk.jpg");
+   background-color: #cccccc;
+}
+</style>
+
+
 </head>
 
 <body class="fix-header fix-sidebar">
