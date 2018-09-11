@@ -55,13 +55,13 @@
                           <h2><?php
                           include 'connections/conn.php';
                           $dados = mysqli_fetch_array(mysqli_query($conn, "SELECT SUM(desconto_irc)  as totalirs from recibos"));
-                          $dados1 = mysqli_fetch_array(mysqli_query($conn, "SELECT SUM(desconto_ss)  as totalss from recibos"));
-                          $gastos = $dados['totalirs'] + $dados1['totalss'];
-                          echo round($gastos,2);
+
+
+                          echo round($dados['totalirs'],2);
                           include 'connections/diconn.php';
 
                             ?> €</h2>
-                            <p class="m-b-0">Total Gastos em Impostos</p>
+                            <p class="m-b-0">Total Gastos em IRS</p>
                         </div>
                     </div>
                 </div>
@@ -75,12 +75,12 @@
                         <div class="media-body media-text-right">
                           <h2><?php
                           include 'connections/conn.php';
-                          $dados = mysqli_fetch_array(mysqli_query($conn, "SELECT AVG(func_salario) as total from funcionarios"));
-                          echo round($dados['total'],2);
+                          $dados1 = mysqli_fetch_array(mysqli_query($conn, "SELECT SUM(desconto_ss)  as totalss from recibos"));
+                          echo round($dados1['totalss'],2);
                           include 'connections/diconn.php';
 
                             ?> €</h2>
-                            <p class="m-b-0">Média de Ordenado</p>
+                            <p class="m-b-0">Total Gasto em Segurança Social</p>
                         </div>
                     </div>
                 </div>

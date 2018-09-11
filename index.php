@@ -6,6 +6,7 @@ session_destroy();
 <!DOCTYPE html>
 <html lang="en">
 
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,7 +16,7 @@ session_destroy();
     <meta name="author" content="">
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
-    <title>Ela - Bootstrap Admin Dashboard Template</title>
+    <title>Cork Express </title>
     <!-- Bootstrap Core CSS -->
     <link href="css/lib/bootstrap/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
@@ -27,6 +28,17 @@ session_destroy();
     <script src="https:**oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https:**oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
+
+  <center>
+    <br>
+    <br>
+    <br>
+  <img src="images/cork.png" />
+</center>
+
+
+
+
 </head>
 
 <body class="fix-header fix-sidebar">
@@ -44,10 +56,9 @@ session_destroy();
                     <div class="col-lg-4">
                         <div class="login-content card">
                             <div class="login-form">
-                                <h4>Login</h4>
                                 <form method="post">
                                     <div class="form-group">
-                                        <label>Email address</label>
+                                        <label>Nome de Utilizador</label>
                                         <input type="text" name="user" class="form-control" placeholder="Username">
                                     </div>
                                     <div class="form-group">
@@ -56,14 +67,14 @@ session_destroy();
                                     </div>
                                     <div class="checkbox">
                                         <label>
-        										<input type="checkbox"> Remember Me
+        										<input type="checkbox"> Lembrar
         									</label>
                                         <label class="pull-right">
-        										<a href="#">Forgotten Password?</a>
+        										<a href="#">Esqueceu a Password?</a>
         									</label>
 
                                     </div>
-                                    <button type="submit" name="bt_login" class="btn btn-info btn-flat m-b-30 m-t-30">Sign in</button>
+                                    <button type="submit" name="bt_login"  class="btn btn-info btn-flat m-b-30 m-t-30">Entrar</button>
 
                                 </form>
 
