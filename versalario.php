@@ -1,16 +1,22 @@
 <?php
-  if(!@$_POST['id_funcionario']){
-    if(!@$_SESSION['userid']){
-      echo'<meta http-equiv="refresh" content="0;url=/corkexpress/indexadmin.php?an=2"';
+
+  $id_f = $_REQUEST['id_funcionario'];
+  if(!$id_f){
+
+      if(!@$_SESSION['userid']){
+
+        echo'<meta http-equiv="refresh" content="0;url=/corkexpress/indexadmin.php?an=2"';
+
     }else{
       echo'<meta http-equiv="refresh" content="0;url=/corkexpress/indexuser.php"';
     }
-  }else{
+
+  }
     include 'connections/conn.php';
-    $dados = mysqli_fetch_array(mysqli_query($conn,"SELECT * FROM funcionarios WHERE id_funcionario='$_POST[id_funcionario]'"));
+    $dados = mysqli_fetch_array(mysqli_query($conn,"SELECT * FROM funcionarios WHERE id_funcionario='$id_f'"));
 
     include 'connections/diconn.php';
-  }
+
 
 ?>
 
@@ -127,6 +133,10 @@
                                           <?php for($i=1;$i<=12;$i++){echo "<option value=\"$i\">$i</option>";} ?>
                                         </select>
                                           </div>
+                                          <?php
+                                            if(@$_REQUEST['page']=='error')
+                                            echo "<br><div class=\"alert alert-danger\">Já foi Processado</div>";
+                                            ?>
                                           <br>
                                       <div class="form-actions">
                                           <button type="submit" name="bt_save" class="btn btn-info"> <i class="fa fa-check"></i> Emitir Recibo </button>
@@ -140,20 +150,38 @@
                               <?php
 
 
+
+
+
                                     if(isset($_POST['bt_save'])){
                                       include 'connections/conn.php';
 
+
+
+                                      $row = mysqli_fetch_array(mysqli_query($conn,"SELECT * FROM recibos WHERE ano='$_POST[ano_p]' AND mes='$_POST[mes_p]' AND id_funcionario='$_POST[id]'"));
+
+
+                                      if(!$row){
                                         mysqli_query($conn,"INSERT INTO recibos (ano,mes,nome_funcionario,nib_funcionario
                                         ,nif_funcionario,niss_funcionario,salario_base,turno_mensal,desconto_ss,desconto_irc,valor_liquido,valor_bruto,id_funcionario,subsidio_turno) VALUES (
                                           '$_POST[ano_p]','$_POST[mes_p]','$_POST[func_nome]','$_POST[nib_p]'
                                           ,'$_POST[nif_p]','$_POST[niss_p]','$_POST[func_salario]'
                                           ,'$_POST[turno_mensal]','$_POST[dss]','$_POST[dirs]','$_POST[valor_liquido]','$_POST[valor_bruto]','$_POST[id]','$_POST[subsidio_turno]'
                                         )");
+                                        echo'<meta http-equiv="refresh" content="0;url=/corkexpress/indexadmin.php?an=2"';
+                                      }else{
+                                        echo'<meta http-equiv="refresh" content="0;url=/corkexpress/indexadmin.php?an=12&page=error&id_funcionario='.$_POST['id'].'">';
+
+                                      }
+
+
 
                                       include 'connections/diconn.php';
                                     }
                               ?>
                           </div>
+
                       </div>
                   </div>
+
 </div>
