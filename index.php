@@ -27,12 +27,15 @@ session_destroy();
     <script src="https:**oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https:**oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
-<style media="screen">
-body {
-   background-image: url("images/bk.jpg");
-   background-color: #cccccc;
-}
-</style>
+
+  <center>
+    <br>
+    <br>
+    <br>
+  <img src="images/cork.png" />
+</center>
+
+
 
 
 </head>
@@ -52,10 +55,9 @@ body {
                     <div class="col-lg-4">
                         <div class="login-content card">
                             <div class="login-form">
-                                <h4>Login</h4>
                                 <form method="post">
                                     <div class="form-group">
-                                        <label>Email address</label>
+                                        <label>Nome de Utilizador</label>
                                         <input type="text" name="user" class="form-control" placeholder="Username">
                                     </div>
                                     <div class="form-group">
@@ -64,14 +66,14 @@ body {
                                     </div>
                                     <div class="checkbox">
                                         <label>
-        										<input type="checkbox"> Remember Me
+        										<input type="checkbox"> Lembrar
         									</label>
                                         <label class="pull-right">
-        										<a href="#">Forgotten Password?</a>
+        										<a href="#">Esqueceu a Password?</a>
         									</label>
 
                                     </div>
-                                    <button type="submit" name="bt_login" class="btn btn-info btn-flat m-b-30 m-t-30">Sign in</button>
+                                    <button type="submit" name="bt_login"  class="btn btn-info btn-flat m-b-30 m-t-30">Entrar</button>
 
                                 </form>
 
