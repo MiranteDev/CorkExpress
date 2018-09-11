@@ -335,6 +335,9 @@ $(document).ready(function(){
                           case '12':
                             include 'versalario.php';
                             break;
+                            case '13':
+                              include 'editfuncionario.php';
+                              break;
 
             default:
                 include 'home.php';

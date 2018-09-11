@@ -13,10 +13,7 @@
   }
 
 ?>
-<script>
-  $('#ano').val(<?php echo $_GET['ano'] ?>);
-  $('#mes').val(<?php echo $_GET['mes'] ?>);
-</script>
+
 <div class="page-wrapper">
 
   <div class="container-fluid">
@@ -24,12 +21,14 @@
                   <div class="row">
                       <div class="col">
                           <div class="card card-outline-info">
+                            <form method="post">
                               <div class="card-header">
                                   <h4 class="m-b-0 text-white" name="funcionario_p">Funcionario: <?php echo "$dados[func_nome]"; ?></h4>
+                                  <input type="hidden" name="func_nome" value="<?php echo "$dados[func_nome]"; ?>">
                                   <input type="hidden" id="id" name="id" value=" <?php echo "$dados[id_funcionario]"; ?> ">
                               </div>
                               <div class="card-body">
-                                  <form method="post">
+
                                       <div class="form-body">
                                           <h3 class="card-title m-t-15">Informações Fiscais</h3>
                                           <hr>
@@ -84,10 +83,12 @@
 
                                                   </select>
 
+
                                                     <?php
 
 
-                                                    echo'<label>Turno</label><select class="form-control custom-select" name="turno_mensal"  id="turno_mensal" tabindex="1">
+                                                    echo'<label>Turno</label><select required class="form-control custom-select" name="turno_mensal"  id="turno_mensal" tabindex="1" >
+                                                        <option value="">Escolher</option>
                                                         <option value="1">Manhã</option>
                                                         <option value="2">Tarde</option>
                                                         <option value="3">Noite</option>
@@ -131,31 +132,43 @@
                                           <button type="submit" name="bt_save" class="btn btn-info"> <i class="fa fa-check"></i> Emitir Recibo </button>
                                           <button type="button" class="btn btn-inverse">Cancelar</button>
                                       </div>
-                                  </form>
-                                  <?php
 
 
-                                        if(isset($_POST['bt_save'])){
-                                          include 'connections/conn.php';
-
-
-
-                                            $verificacao = 
-
-
-
-                                            mysqli_query($conn,"INSERT INTO recibos (ano,mes,nome_funcionario,nib_funcionario
-                                            ,nif_funcionario,niss_funcionario,salario_base,turno_mensal,desconto_ss,desconto_irc,valor_liquido,valor_bruto) VALUES (
-                                              '$_POST[ano_p]','$_POST[mes_p]','$_POST[funcionario_p]','$_POST[nib_p]'
-                                              ,'$_POST[nif_p]','$_POST[niss_p]','$_POST[func_salario]'
-                                              ,'$_POST[turno_mensal]','$_POST[dss]','$_POST[dirs]','$_POST[valor_liquido]','$_POST[valor_bruto]'
-                                            )");
-
-                                          include 'connections/diconn.php';
-                                        }
-                                  ?>
 
                               </div>
+                              </form>
+                              <?php
+
+
+                                    if(isset($_POST['bt_save'])){
+                                      include 'connections/conn.php';
+
+
+
+                                              mysqli_query($conn,"INSERT INTO recibos (ano,mes,nome_funcionario,nib_funcionario
+                                              ,nif_funcionario,niss_funcionario,salario_base,turno_mensal,desconto_ss,desconto_irc,valor_liquido,valor_bruto) VALUES (
+                                                '$_POST[ano_p]','$_POST[mes_p]','$_POST[funcionario_p]','$_POST[nib_p]'
+                                                ,'$_POST[nif_p]','$_POST[niss_p]','$_POST[func_salario]'
+                                                ,'$_POST[turno_mensal]','$_POST[dss]','$_POST[dirs]','$_POST[valor_liquido]','$_POST[valor_bruto]'
+                                              ) WHERE ano,mes not exists ");
+
+
+
+
+
+
+
+
+                                        mysqli_query($conn,"INSERT INTO recibos (ano,mes,nome_funcionario,nib_funcionario
+                                        ,nif_funcionario,niss_funcionario,salario_base,turno_mensal,desconto_ss,desconto_irc,valor_liquido,valor_bruto,id_funcionario,subsidio_turno) VALUES (
+                                          '$_POST[ano_p]','$_POST[mes_p]','$_POST[func_nome]','$_POST[nib_p]'
+                                          ,'$_POST[nif_p]','$_POST[niss_p]','$_POST[func_salario]'
+                                          ,'$_POST[turno_mensal]','$_POST[dss]','$_POST[dirs]','$_POST[valor_liquido]','$_POST[valor_bruto]','$_POST[id]','$_POST[subsidio_turno]'
+                                        )");
+
+                                      include 'connections/diconn.php';
+                                    }
+                              ?>
                           </div>
                       </div>
                   </div>

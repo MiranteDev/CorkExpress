@@ -55,7 +55,7 @@
                                           <td><?php echo "$cat[descricao_categoria]"; ?></td>
                                           <td scope="row" ><?php echo "$row[niss_funcionario]"; ?> </td>
                                           <td scope="row" ><?php echo "$row[nif_funcionario]"; ?></td>
-                                          <td class="color-primary"><?php echo ($func['func_salario']/$row['desconto_irc']); ?> %</td>
+                                          <td class="color-primary"><?php echo round(($func['func_salario']/$row['desconto_irc']),0); ?> %</td>
                                       </tr>
 
                                   </tbody>
@@ -92,7 +92,7 @@
                                               <th>Remuneração</th>
                                               <td>176h</td>
                                               <td><?php echo round(($func['func_salario']/176),2) ?></td>
-                                              <td><?php echo "$func[func_salario]"; ?></td>
+                                              <td><?php echo "$func[func_salario]"; ?> €</td>
                                               <td class="color-primary"></td>
                                               <td></td>
                                           </tr>
@@ -100,7 +100,7 @@
                                               <th>Subsidio Turno</th>
                                               <td></td>
                                               <td></td>
-                                              <td><?php echo "$row[turno_mensal]"; ?> €</td>
+                                              <td><?php echo "$row[subsidio_turno]"; ?> €</td>
                                               <td class="color-primary"></td>
                                               <td></td>
                                           </tr>
@@ -109,7 +109,7 @@
                                               <td><?php echo "$row[valor_bruto]"; ?></td>
                                               <td></td>
                                               <td></td>
-                                              <td class="color-primary"><?php echo ($func['func_salario']/$row['desconto_ss']); ?></td>
+                                              <td class="color-primary"><?php echo round(($func['func_salario']/$row['desconto_ss']),0); ?></td>
                                               <td><?php echo $row['desconto_ss']; ?> €</td>
                                           </tr>
                                           <tr>
@@ -117,21 +117,38 @@
                                               <td><?php echo "$row[valor_bruto]"; ?></td>
                                               <td></td>
                                               <td></td>
-                                              <td class="color-primary"><?php echo ($func['func_salario']/$row['desconto_irc']); ?></td>
+                                              <td class="color-primary"><?php echo round(($func['func_salario']/$row['desconto_irc'])); ?></td>
                                               <td><?php echo $row['desconto_irc']; ?> €</td>
                                           </tr>
                                           <tr>
                                               <th>Totais</th>
                                               <td></td>
                                               <td></td>
-                                              <td>618€</td>
+                                              <td><?php echo $row['valor_bruto']; ?></td>
                                               <td class="color-primary"</td>
-                                              <td><?php echo round((($func['func_salario']/$row['desconto_irc'])+($func['func_salario']/$row['desconto_ss'])),2); ?></td>
+                                              <td><?php echo round(($row['desconto_irc']+$row['desconto_ss']),2); ?></td>
                                           </tr>
 
                                       </tbody>
                                   </table>
                               </div>
+                              <div class="table-responsive" style="float:right;">
+                                                  <table class="table">
+                                                      <thead>
+                                                          <tr>
+
+                                                              <th style="font-size:30px;color:black;">Total a Receber</th>
+
+                                                          </tr>
+                                                      </thead>
+                                                      <tbody style="float:right;">
+                                                          <tr>
+                                                              <th scope="row" style="font-size:24px;color:black;"><?php echo "$row[valor_liquido]"; ?> €</th>
+                                                          </tr>
+
+                                                      </tbody>
+                                                  </table>
+                                              </div>
 
               </div>
       </div>
