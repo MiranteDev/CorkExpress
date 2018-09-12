@@ -147,10 +147,7 @@
 
                                             mysqli_query($conn,"INSERT INTO funcionarios (func_nome,func_bi,func_nif,func_niss
                                             ,func_nib,func_datan,func_salario,func_tipodepart,id_categoria) VALUES (
-                                              '$_POST[func_nome]','$_POST[func_bi]','$_POST[func_nif]','$_POST[func_niss]'
-                                              ,'$_POST[func_nib]','$_POST[func_datan]','$_POST[func_salario]'
-                                              ,'$_POST[func_tipodepart]','$_POST[id_categoria]'
-                                            )");
+                                              '$_POST[func_nome]','$_POST[func_bi]','$_POST[func_nif]','$_POST[func_niss]','$_POST[func_nib]','$_POST[func_datan]','$_POST[func_salario]','$_POST[func_tipodepart]','$_POST[id_categoria]')");
                                               $ultimo = mysqli_insert_id($conn);
 
                                             mysqli_query($conn,"INSERT INTO login (username,password,tipo,id_funcionario) VALUES (

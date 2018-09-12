@@ -65,7 +65,7 @@ $(document).ready(function(){
             });
           });
             </script>
-            
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:** -->
     <!--[if lt IE 9]>
@@ -253,7 +253,6 @@ $(document).ready(function(){
                         <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-user"></i><span class="hide-menu">Funcionarios</span></a>
                             <ul aria-expanded="false" class="collapse">
                                 <li><a href="/corkexpress/indexadmin.php?an=3">Adicionar</a></li>
-                                <li><a href="/corkexpress/indexadmin.php?an=10">Editar</a></li>
                                 <li><a href="/corkexpress/indexadmin.php?an=4">Listar</a></li>
                             </ul>
                         </li>
@@ -325,9 +324,7 @@ $(document).ready(function(){
                       include 'notificacao.php';
                       break;
 
-                      case '10':
-                        include 'editfuncionario.php';
-                        break;
+                    
 
                         case '11':
                           include 'editescalao.php';
